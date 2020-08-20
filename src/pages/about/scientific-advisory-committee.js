@@ -73,7 +73,7 @@ const ScienceAdvisoryCommitteePage = () => {
                 <Heading>Meet the Committee</Heading>
                 {
                     committee.map(member => (
-                        <Profile compact={ isCompact }>
+                        <Profile key={ member.frontmatter.name } compact={ isCompact }>
                             <SacMemberPhoto fixed={ member.frontmatter.photo.childImageSharp.fixed } />
                             <SacMemberDetails>
                                 <SacMemberName center={ isCompact }>{ member.frontmatter.name }</SacMemberName>
