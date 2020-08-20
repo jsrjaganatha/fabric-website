@@ -80,6 +80,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `./src/data/leadership`,
+        name: `leadership`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         path: `./src/data/resources`,
         name: `resources`,
       },
