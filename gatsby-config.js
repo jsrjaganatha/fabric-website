@@ -80,6 +80,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `./src/data/leadership`,
+        name: `leadership`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         path: `./src/data/resources`,
         name: `resources`,
       },
@@ -104,7 +111,7 @@ module.exports = {
         short_name: `FABRIC Testbed`,
         start_url: `/`,
         background_color: `#fff`,
-        theme_color: `##27aae1`,
+        theme_color: `##`,
         display: `minimal-ui`,
         icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },

@@ -129,7 +129,7 @@ export const Menu = ({ items, showBrand }) => {
                                             }
                                         </Match>
                                         <Submenu open={ openSubmenu === currentIndex } onClick={ handleCloseAllSubmenus } width={ item.submenu.reduce((max, item) => item.text.length > max ? item.text.length : max, 0) }>
-                                            { item.submenu.map(subitem => <MenuLink key={ subitem.path } to={ subitem.path } activeClassName="active" partiallyActive={ true }>{ subitem.text }</MenuLink>) }
+                                          { item.submenu.map(subitem => <MenuLink key={ subitem.text } to={ subitem.path } activeClassName="active" partiallyActive={ true }>{ subitem.text }</MenuLink>) }
                                         </Submenu>
                                     </Fragment>
                                     : (<MenuLink to={ item.path } activeClassName="active" partiallyActive={ true }>{ item.text }</MenuLink>)
