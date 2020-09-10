@@ -58,7 +58,7 @@ const corePartnerLogos = [
     'renci.png',
     'uk.png',
     'clemson.png',
-    'iit.png',
+    'university-of-illinois.png',
     'esnet.png',
 ]
 
