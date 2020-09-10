@@ -13,8 +13,8 @@ export const contributors = [
       },
       {
         name: 'Anita Nikolich',
-        url: 'https://www.iit.edu/',
-        organization: 'Illinois Institute of Technology',
+        url: 'https://illinois.edu/',
+        organization: 'University of Illinois Urbana Champaign',
       },
       {
         name: 'Paul Ruth',
