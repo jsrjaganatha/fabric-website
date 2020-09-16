@@ -4,7 +4,7 @@ path: /events/redhat-research-day-2020
 date: 2020-09-17
 display_date: 
 location: Virtual
-url: 
+url: http://research.redhat.com/research-days-us-2020
 tags: ["workshop", "Ilya Baldin"]
 fabricHosted: false
 seo:
