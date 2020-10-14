@@ -93,7 +93,7 @@ export const CapabilitiesModule = ({ capabilitys }) => {
             </div>
             
             <Paragraph center>
-                <ButtonLink to="/about" secondary>Learn More</ButtonLink>
+                <ButtonLink to="/about/overview" secondary>Learn More</ButtonLink>
             </Paragraph>
         </Wrapper>
     )
