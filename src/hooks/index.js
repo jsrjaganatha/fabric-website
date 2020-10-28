@@ -1,3 +1,4 @@
+export * from './use-brochures'
 export * from './use-capabilities'
 export * from './use-design-documents'
 export * from './use-faqs'

@@ -22,6 +22,10 @@ module.exports = [
         path: '/resources',
         submenu: [
             {
+                text: 'Brochures',
+                path: '/resources/brochures',
+            },
+            {
                 text: 'Design Documents',
                 path: '/resources/design-documents',
             },
