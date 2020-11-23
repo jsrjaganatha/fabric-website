@@ -20,10 +20,20 @@ The goal of this workshop is to discuss production details with our partners. We
 
 \* <b>Please read <a href="https://docs.google.com/document/d/1O-tKCqAfRAf6uNuq3pmtlHG-zdESz4SSEopXE5OiktM/edit" target="\_blank">FABRIC Workshops Code of Conduct</a> before workshop.</b>
 
+#### Registration
+
+Registration is available by invitation only. Haven't received your invite? <a href="https://share.hsforms.com/1zrfnFUQeR1SeIsecIUaGBA3ry9k" target="_blank">Request one here</a>.
+
 #### Agenda
 
 <img src="../../images/events/2020-12-03-fabric-workshop-agenda-day-1.jpg" />
 
+<br>
+<br>
+
 <img src="../../images/events/2020-12-03-fabric-workshop-agenda-day-2.jpg" />
 
-Please stay informed by <a href="https://share.hsforms.com/1BWk9L7CNTe-Pp9MdVMdKWQ3ry9k" target="_blank">signing up for our newsletter</a>.
+<br>
+<br>
+
+<div style="text-align: center">For a printable version of the agenda, <a href="https://docs.google.com/document/d/1rbCMuyDUjcYUpDIcJz_PiQMPrl6EoOSWOgj6SniCYeE/edit" target="_blank">click here</a>.</div>
