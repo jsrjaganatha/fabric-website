@@ -32,3 +32,8 @@ Registration is available by invitation only. Haven't received your invite? <a h
 <br>
 
 <img src="../../images/events/2020-12-03-fabric-workshop-agenda-day-2.jpg" />
+
+<br>
+<br>
+
+<div style="text-align: center">For a printable version of the agenda, <a href="https://docs.google.com/document/d/1rbCMuyDUjcYUpDIcJz_PiQMPrl6EoOSWOgj6SniCYeE/edit" target="_blank">click here</a>.</div>
