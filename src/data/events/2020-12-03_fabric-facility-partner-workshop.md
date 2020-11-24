@@ -5,7 +5,7 @@ date: 2020-12-03
 display_date: December 3-4, 2020
 location: The workshop takes place online, invited guests will receive details closer to the event date.
 urlLabel: "Request An Invitation"
-url: https://share.hsforms.com/1zrfnFUQeR1SeIsecIUaGBA3ry9k
+url: https://bit.ly/FPW-Request-Invite
 tags: ["FABRIC", "workshop", "NSF"]
 fabricHosted: true
 seo:
@@ -26,14 +26,6 @@ Registration is available by invitation only. Haven't received your invite? <a h
 
 #### Agenda
 
-<img src="../../images/events/2020-12-03-fabric-workshop-agenda-day-1.jpg" />
+<iframe src="https://docs.google.com/document/d/e/2PACX-1vRNyPMgq3z1dcm0Bh_-313Jnpoex_9mjMzjlw5CiATu9aLn7KMm_yQOXQHq-jPt6gwLOZvo48IOwt10/pub?embedded=true" height="1600" width="800"></iframe>
 
-<br>
-<br>
-
-<img src="../../images/events/2020-12-03-fabric-workshop-agenda-day-2.jpg" />
-
-<br>
-<br>
-
-<div style="text-align: center">For a printable version of the agenda, <a href="https://docs.google.com/document/d/1rbCMuyDUjcYUpDIcJz_PiQMPrl6EoOSWOgj6SniCYeE/edit" target="_blank">click here</a>.</div>
+<div>For a printable version of the agenda, <a href="https://docs.google.com/document/d/1rbCMuyDUjcYUpDIcJz_PiQMPrl6EoOSWOgj6SniCYeE/edit" target="_blank">click here</a>.</div>
