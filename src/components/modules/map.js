@@ -1,79 +1,64 @@
 import React from 'react'
 import { Module } from '../layout'
 import fabricMapSvg from '../../images/fabric-map.svg'
-import { geoCentroid } from "d3-geo";
 import {
   ComposableMap,
   Geographies,
   Geography,
   Marker,
-  Annotation
+  Line,
 } from "react-simple-maps";
 
-import allStates from "../../data/topologymap/allstates.json";
+const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
-
-const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";;
-const offsets = {
-  VT: [50, -8],
-  NH: [34, 2],
-  MA: [30, -1],
-  RI: [28, 2],
-  CT: [35, 10],
-  NJ: [34, 1],
-  DE: [33, 0],
-  MD: [47, 10],
-  DC: [49, 21]
-};
+const markers = [
+  {
+    markerOffset: 20,
+    name: "Salt Lake City",
+    coordinates: [-111.891045, 40.760780]
+  },
+  { markerOffset: 20, name: "Kansas City", coordinates: [-94.5786, 39.0997] },
+  { markerOffset: 20, name: "New York", coordinates: [-74.005974, 40.712776] },
+  { markerOffset: 20, name: "Atlanta", coordinates: [-84.3880, 33.7490] },
+  { markerOffset: 20, name: "Seattle", coordinates: [-122.3321, 47.6062] },
+  { markerOffset: 20, name: "San Diego", coordinates: [-117.1611, 32.7157] },
+  { markerOffset: 20, name: "Houston", coordinates: [-95.3698, 29.7604] },
+  { markerOffset: 20, name: "Chicago", coordinates: [-87.6298, 41.8781] },
+  { markerOffset: 20, name: "Washington", coordinates: [-77.0369, 38.9072] },
+];
 
 export const MapModule = props => {
     return (
         <Module title="Anticipated FABRIC Topology">
             <img src={ fabricMapSvg } alt="" style={{ width: '100%' }}/>
             <ComposableMap projection="geoAlbersUsa">
-      <Geographies geography={geoUrl}>
-        {({ geographies }) => (
-          <>
-            {geographies.map(geo => (
-              <Geography
-                key={geo.rsmKey}
-                stroke="#FFF"
-                geography={geo}
-                fill="#DDD"
-              />
-            ))}
-            {geographies.map(geo => {
-              const centroid = geoCentroid(geo);
-              const cur = allStates.find(s => s.val === geo.id);
-              return (
-                <g key={geo.rsmKey + "-name"}>
-                  {cur &&
-                    centroid[0] > -160 &&
-                    centroid[0] < -67 &&
-                    (Object.keys(offsets).indexOf(cur.id) === -1 ? (
-                      <Marker coordinates={centroid}>
-                        <text y="2" fontSize={14} textAnchor="middle">
-                          {cur.id}
-                        </text>
-                      </Marker>
-                    ) : (
-                      <Annotation
-                        subject={centroid}
-                        dx={offsets[cur.id][0]}
-                        dy={offsets[cur.id][1]}
-                      >
-                        <text x={4} fontSize={14} alignmentBaseline="middle">
-                          {cur.id}
-                        </text>
-                      </Annotation>
+              <Geographies geography={geoUrl}>
+                {({ geographies }) => (
+                  <>
+                    {geographies.map(geo => (
+                      <Geography
+                        key={geo.rsmKey}
+                        // stroke="#FFF"
+                        geography={geo}
+                        fill="#cde4ef"
+                      />
                     ))}
-                </g>
-              );
-            })}
-          </>
-        )}
-      </Geographies>
-    </ComposableMap>
+                  </>
+                )}
+              </Geographies>
+              {markers.map(({ name, coordinates, markerOffset }) => (
+                <Marker key={name} coordinates={coordinates}>
+                  <circle r={5} fill="#27aae1" stroke="#fff" strokeWidth={1.5} />
+                  <text
+                    textAnchor="middle"
+                    y={markerOffset}
+                    style={{ fontFamily: "system-ui", fill: "#5D5A6D" }}
+                  >
+                    {name}
+                  </text>
+                </Marker>
+              ))}
+            </ComposableMap>
         </Module>
     )
 }
