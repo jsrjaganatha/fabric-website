@@ -21,7 +21,7 @@ import { Container, Row, Col, Visible } from "react-grid-system"
 const Blurb = styled(Paragraph)`
   font-family: var(--font-heading);
   color: var(--color-grey);
-  line-height: ${(props) => (props.compact ? "1.25" : "1.0")};
+  line-height: ${(props) => (props.compact ? "1.5" : "1.25")};
   font-size: ${(props) => (props.compact ? "6vw" : "275%")};
   text-align: right;
   margin: 1rem;
@@ -86,6 +86,9 @@ const HomePage = (props) => {
                   connect a number of specialized testbeds (5G/IoT PAWR, NSF
                   Clouds) and high-performance computing facilities to create a
                   rich fabric for a wide variety of experimental activities.
+                </Paragraph>
+                <Paragraph style={{ fontSize: '90%' }}>
+                  FABRIC Across Borders (FAB) extends the network to nodes in Asia and Europe for expanded scientific impact.
                 </Paragraph>
               </AnimateOnMount>
             </Col>

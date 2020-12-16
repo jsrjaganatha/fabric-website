@@ -162,4 +162,40 @@ export const contributors = [
       },
     ],
   },
+  {
+    id: "fab-core-team",
+    name: "FAB Core Team",
+    members: [
+      {
+        name: "Ilya Baldin",
+        url: "https://renci.org/",
+        organization: "RENCI",
+      },
+      {
+        name: "Anita Nikolich",
+        url: "https://illinois.edu/",
+        organization: "University of Illinois Urbana Champaign",
+      },
+      {
+        name: "Jim Griffioen",
+        url: "http://www.uky.edu/",
+        organization: "University of Kentucky",
+      },
+      {
+        name: "KC Wang",
+        url: "https://www.clemson.edu/",
+        organization: "Clemson University",
+      },
+      {
+        name: "Inder Monga",
+        url: "#",
+        organization: "Lawrence Berkeley National Laboratory",
+      },
+      {
+        name: "Rob Gardner",
+        url: "https://www.uchicago.edu/",
+        organization: "University of Chicago",
+      },
+    ],
+  },
 ]

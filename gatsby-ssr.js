@@ -16,11 +16,13 @@ export const wrapPageElement = ({ element, props }) => {
 export function onRenderBody(
   { setHeadComponents }
 ) {
- setHeadComponents([
-     <script
-        key="hubspot"
-        type="text/javascript"
-        src="//js.hs-scripts.com/6342968.js"
-      />,
-  ]);
+  if (process.env.NODE_ENV !== 'development') {
+    setHeadComponents([
+       <script
+          key="hubspot"
+          type="text/javascript"
+          src="//js.hs-scripts.com/6342968.js"
+        />,
+    ]);
+  }
 }

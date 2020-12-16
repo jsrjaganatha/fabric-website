@@ -8,6 +8,10 @@ module.exports = [
                 path: '/about/overview',
             },
             {
+                text: 'FAB',
+                path: '/about/fab',
+            },
+            {
                 text: 'SAC',
                 path: '/about/scientific-advisory-committee',
             },
