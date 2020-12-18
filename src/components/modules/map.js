@@ -1,4 +1,6 @@
 import React from 'react'
+import styled from 'styled-components'
+import { Button } from '../button'
 import { Module } from '../layout'
 import fabricMapSvg from '../../images/fabric-map.svg'
 import {
@@ -10,6 +12,45 @@ import {
 } from "react-simple-maps";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+
+
+const Tabs = styled.article`
+    display: flex;
+    margin: 6rem 0 0 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+`
+
+const Tab = styled(Button)`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: transform 250ms ease-out;
+    cursor: pointer;
+    padding: ${ props => props.compact ? '0.25rem' : '0.5rem 1rem' };
+    margin: 0 0.25rem;
+    border-width: 1px 1px 0 1px;
+    border-style: solid;
+    border-color: var(--color-primary);
+    border-radius: 0;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    box-shadow: none;
+    background-color: ${ props => props.active ? 'var(--color-primary)' : 'var(--color-light)' };
+    color: ${ props => props.active ? 'var(--color-light)' : 'var(--color-primary)' };
+    &:hover, &:focus {
+        background-color: ${ props => props.active ? 'var(--color-primary)' : 'var(--color-primary-light)' } !important;
+        color: ${ props => props.active ? 'var(--color-light)' : 'var(--color-primary-dark)' } !important;
+        box-shadow: none;
+    }
+`
+const Content = styled.div`
+    border: 1px solid var(--color-primary);
+    border-radius: 0.25rem;
+    padding: 2rem 2rem 0 2rem;
+    z-index: 99;
+`
 
 const coordinates = {
   "Salt Lake City": [-111.891045, 40.760780],
@@ -76,82 +117,91 @@ const lines_super = [
 ]
 
 export const MapModule = props => {
+    const handleToggleTab = newIndex => console.log(newIndex)
+
     return (
-        <Module title="Anticipated FABRIC Topology">
-            <img src={ fabricMapSvg } alt="" style={{ width: '100%' }}/>
-            <ComposableMap projection="geoAlbersUsa">
-              <Geographies geography={geoUrl}>
-                {({ geographies }) => (
-                  <>
-                    {geographies.map(geo => (
-                      <Geography
-                        key={geo.rsmKey}
-                        // stroke="#FFF"
-                        geography={geo}
-                        fill="#cde4ef"
-                      />
-                    ))}
-                  </>
-                )}
-              </Geographies>
+      <Module title="Anticipated FABRIC Topology">
+          <img src={ fabricMapSvg } alt="" style={{ width: '100%' }}/>
+          <Tabs>
+            <Tab key="map-phase-1" onClick={ handleToggleTab(1) } active compact={ true }>Phase 1</Tab>
+            <Tab key="map-phase-2" onClick={ handleToggleTab(2) } compact={ true }>Phase 2</Tab>
+            <Tab key="map-phase-3" onClick={ handleToggleTab(3) } compact={ true }>FABRIC Across Borders</Tab>
+          </Tabs>
+          <Content>
+          <ComposableMap projection="geoAlbersUsa">
+            <Geographies geography={geoUrl}>
+              {({ geographies }) => (
+                <>
+                  {geographies.map(geo => (
+                    <Geography
+                      key={geo.rsmKey}
+                      // stroke="#FFF"
+                      geography={geo}
+                      fill="#cde4ef"
+                    />
+                  ))}
+                </>
+              )}
+            </Geographies>
 
-              {lines_dedicated.map(({ from, to }) => (
-                <Line
-                  key={`line-${from}-to-${to}`}
-                  from={coordinates[from]}
-                  to={coordinates[to]}
-                  stroke="#c7c7c7"
-                  strokeWidth={1}
+            {lines_dedicated.map(({ from, to }) => (
+              <Line
+                key={`line-${from}-to-${to}`}
+                from={coordinates[from]}
+                to={coordinates[to]}
+                stroke="#c7c7c7"
+                strokeWidth={1}
+                strokeLinecap="round"
+              />
+            ))}
+
+            {lines_super.map(({ from, to }) => (
+              <Line
+                key={`super-line-${from}-to-${to}`}
+                from={coordinates[from]}
+                to={coordinates[to]}
+                stroke="#ffde17"
+                strokeWidth={10}
+                strokeLinecap="round"
+              />
+            ))}
+
+            {core_nodes.map(({ name, markerOffset }) => (
+              <Marker key={name} coordinates={coordinates[name]}>
+                <circle r={8} fill="#27aae1" strokeWidth={1.5} />
+                <text
+                  textAnchor="middle"
+                  y={markerOffset}
+                  style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".8rem" }}
+                >
+                  {name}
+                </text>
+              </Marker>
+            ))}
+            {edge_nodes.map(({ name, markerOffset }) => (
+              <Marker key={name} coordinates={coordinates[name]}>
+                <g
+                  fill="none"
+                  stroke="#f26522"
+                  strokeWidth="2"
                   strokeLinecap="round"
-                />
-              ))}
-
-              {lines_super.map(({ from, to }) => (
-                <Line
-                  key={`super-line-${from}-to-${to}`}
-                  from={coordinates[from]}
-                  to={coordinates[to]}
-                  stroke="#ffde17"
-                  strokeWidth={10}
-                  strokeLinecap="round"
-                />
-              ))}
-
-              {core_nodes.map(({ name, markerOffset }) => (
-                <Marker key={name} coordinates={coordinates[name]}>
-                  <circle r={8} fill="#27aae1" strokeWidth={1.5} />
-                  <text
-                    textAnchor="middle"
-                    y={markerOffset}
-                    style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".8rem" }}
-                  >
-                    {name}
-                  </text>
-                </Marker>
-              ))}
-              {edge_nodes.map(({ name, markerOffset }) => (
-                <Marker key={name} coordinates={coordinates[name]}>
-                  <g
-                    fill="none"
-                    stroke="#f26522"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    transform="translate(-12, -24)"
-                  >
-                    <circle cx="12" cy="10" r="3" />
-                    <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
-                  </g>
-                  <text
-                    textAnchor="middle"
-                    y={markerOffset}
-                    style={{ fontFamily: "system-ui", fill: "#f26522", fontSize: ".6rem", fontWeight: "600" }}
-                  >
-                    {name}
-                  </text>
-                </Marker>
-              ))}
-            </ComposableMap>
-        </Module>
+                  strokeLinejoin="round"
+                  transform="translate(-12, -24)"
+                >
+                  <circle cx="12" cy="10" r="3" />
+                  <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
+                </g>
+                <text
+                  textAnchor="middle"
+                  y={markerOffset}
+                  style={{ fontFamily: "system-ui", fill: "#f26522", fontSize: ".6rem", fontWeight: "600" }}
+                >
+                  {name}
+                </text>
+              </Marker>
+            ))}
+          </ComposableMap>
+          </Content>
+      </Module>
     )
 }
