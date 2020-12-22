@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Button } from '../button'
 import { Module } from '../layout'
 import fabricMapSvg from '../../images/fabric-map.svg'
+import { MapPhase1 } from './map-phase-1'
 import { MapPhase2 } from './map-phase-2'
+import { MapPhase3 } from './map-phase-3'
 
 const Tabs = styled.article`
     display: flex;
@@ -36,37 +38,21 @@ const Tab = styled(Button)`
         box-shadow: none;
     }
 `
-const Content = styled.div`
-    border: 1px solid var(--color-primary);
-    border-radius: 0.25rem;
-    padding: 2rem 2rem 0 2rem;
-    z-index: 99;
-`
 
-class MapModule extends React.Component  {
-  state = { 
-    tabIndex: 1,
-  }
-  
-  handleToggleTab = (newIndex) => { 
-    this.setState({ tabIndex: newIndex }) 
-  }
-  
-  render() {
+export const MapModule = props => {
+    const [tabIndex, setTabIndex] = useState(0)
+    const handleToggleTab = newIndex => event => setTabIndex(newIndex)
     return (
       <Module title="Anticipated FABRIC Topology">
-          <img src={ fabricMapSvg } alt="" style={{ width: '100%' }}/>
           <Tabs>
-            <Tab key="map-phase-1" onClick={ this.handleToggleTab(1) } active compact={ true }>Phase 1</Tab>
-            <Tab key="map-phase-2" onClick={ this.handleToggleTab(2) } compact={ true }>Phase 2</Tab>
-            <Tab key="map-phase-3" onClick={ this.handleToggleTab(3) } compact={ true }>FABRIC Across Borders</Tab>
+            <Tab key="map-phase-1" onClick={ handleToggleTab(0) } active={ tabIndex === 0 }>Phase 1</Tab>
+            <Tab key="map-phase-2" onClick={ handleToggleTab(1) } active={ tabIndex === 1 }>Phase 2</Tab>
+            <Tab key="map-phase-3" onClick={ handleToggleTab(2) } active={ tabIndex === 2 }>FABRIC Across Borders</Tab>
           </Tabs>
-          <Content>
-            { this.state.tabIndex === 2 && <MapPhase2 />}
-          </Content>
+            { tabIndex === 0 && <MapPhase1 />}
+            { tabIndex === 1 && <MapPhase2 />}
+            { tabIndex === 2 && <MapPhase3 />}
+          <img src={ fabricMapSvg } alt="" style={{ width: '100%' }}/>
       </Module>
     )
-  }
 }
-
-export default MapModule;

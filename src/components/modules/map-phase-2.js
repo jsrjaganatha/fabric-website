@@ -21,26 +21,25 @@ const coordinates = {
   "Chicago": [-87.6173, 41.8962],
   "Washington": [-77.0369, 38.9072],
   "TACC": [-97.743057, 30.267153],
-  "LBNL": [null],
   "CHAMELEON": [-87.6298, 41.8781],
-  "PSC": [null],
   "COSMOS": [-74.4518, 40.4862],
   "MGHPCC": [-72.6162, 42.2043],
   "NCSA": [-88.207458, 40.112461],
   "SDSC": [-117.2713, 32.8328],
-  "LBNL": [-122.2730, 37.8715]
+  "LBNL": [-122.2730, 37.8715],
+  "PSC": [-79.9959, 40.4406]
 }
 
 const core_nodes = [
   { markerOffset: -20, name: "Salt Lake City" },
   { markerOffset: -20, name: "Kansas City" },
   { markerOffset: -20, name: "New York" },
-  { markerOffset: -20, name: "Atlanta" },
+  { markerOffset: 25, name: "Atlanta" },
   { markerOffset: -20, name: "Seattle" },
   { markerOffset: 25, name: "San Diego" },
   { markerOffset: 20, name: "Houston" },
   { markerOffset: -20, name: "Chicago" },
-  { markerOffset: -20, name: "Washington" },
+  { markerOffset: 25, name: "Washington" },
 ];
 
 const edge_nodes = [
@@ -48,6 +47,7 @@ const edge_nodes = [
   { markerOffset: 5, name: "NCSA" },
   { markerOffset: -25, name:"MGHPCC" },
   { markerOffset: -25, name:"LBNL" },
+  { markerOffset: 5, name:"PSC" }
   // { markerOffset: -30, name:"SDSC" },
   // { markerOffset: -30, name: "CHAMELEON" },
   // { markerOffset: -30, name: "COSMOS" },
@@ -80,7 +80,7 @@ const annotations = [
   {
     city: "Chicago",
     dx: -50,
-    dy: -35,
+    dy: -80,
     textAnchor: "end",
     content: [
       "STARLIGHT",
@@ -92,7 +92,7 @@ const annotations = [
   },
   {
     city: "Salt Lake City",
-    dx: 30,
+    dx: 40,
     dy: 40,
     textAnchor: "start",
     content: [
@@ -104,7 +104,7 @@ const annotations = [
   {
     city: "San Diego",
     dx: 40,
-    dy: -20,
+    dy: -25,
     textAnchor: "start",
     content: [
       "SDSC",
@@ -114,7 +114,7 @@ const annotations = [
   },
   {
     city: "Atlanta",
-    dx: 30,
+    dx: 40,
     dy: 20,
     textAnchor: "start",
     content: [
@@ -125,7 +125,7 @@ const annotations = [
   },
   {
     city: "New York",
-    dx: 30,
+    dx: 20,
     dy: 30,
     textAnchor: "start",
     content: [
@@ -137,8 +137,8 @@ const annotations = [
   },
   {
     city: "Washington",
-    dx: 10,
-    dy: 30,
+    dx: 30,
+    dy: 80,
     textAnchor: "start",
     content: [
       "3ROX",
@@ -150,7 +150,7 @@ const annotations = [
   },
   {
     city: "Kansas City",
-    dx: -10,
+    dx: -30,
     dy: 30,
     textAnchor: "end",
     content: [
@@ -160,8 +160,8 @@ const annotations = [
   },
   {
     city: "Houston",
-    dx: 30,
-    dy: -10,
+    dx: 35,
+    dy: -5,
     textAnchor: "start",
     content: [
       "LEARN",
@@ -198,11 +198,12 @@ export const MapPhase2 = props => {
                 stroke: "#FF5533",
                 strokeWidth: 1,
                 strokeLinecap: "round",
+                strokeDasharray: "4",
               }}
             >  
               {
                 content.map((c) => {
-                  annotations_y += 10;
+                  annotations_y += 12;
                   return(
                   <text
                     y={annotations_y}
@@ -227,8 +228,8 @@ export const MapPhase2 = props => {
               key={`line-${from}-to-${to}`}
               from={coordinates[from]}
               to={coordinates[to]}
-              stroke="#c7c7c7"
-              strokeWidth={2}
+              stroke="#27aae1"
+              strokeWidth={2.5}
               strokeLinecap="round"
             />
           ))}
@@ -250,7 +251,7 @@ export const MapPhase2 = props => {
               <text
                 textAnchor="middle"
                 y={markerOffset}
-                style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".8rem", fontWeight: "8600" }}
+                style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".8rem", fontWeight: "600" }}
               >
                 {name}
               </text>
