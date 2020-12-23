@@ -9,8 +9,9 @@ import {
   Marker,
   Line,
   Annotation,
-  ZoomableGroup,
 } from "react-simple-maps";
+
+import { MapPhase3 } from './map-phase-3'
 
 const geoUrl = {
   "phase1": "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json",
@@ -282,8 +283,6 @@ const Tab = styled(Button)`
 export const MapModule = props => {
     const [tabIndex, setTabIndex] = useState(1)
     const dataset = ["phase1", "phase2", "fab"]
-    const projection = ["geoAlbersUsa", "geoAlbersUsa", "geoEqualEarth"]
-    const projectionConfig=[{}, {}, {scale: 350,center: [ -60, 20]}]
     const handleToggleTab = newIndex => event => setTabIndex(newIndex)
     return (
       <Module title="Anticipated FABRIC Topology">
@@ -292,123 +291,121 @@ export const MapModule = props => {
             <Tab key="map-phase-2" onClick={ handleToggleTab(1) } active={ tabIndex === 1 }>Phase 2</Tab>
             <Tab key="map-phase-3" onClick={ handleToggleTab(2) } active={ tabIndex === 2 }>FABRIC Across Borders</Tab>
           </Tabs>
-          <ComposableMap
-            projection={projection[tabIndex]}
-            projectionConfig={projectionConfig[tabIndex]}
-          >
-            <ZoomableGroup zoom={1}>
-              <Geographies geography={geoUrl[dataset[tabIndex]]}>
-                {({ geographies }) => (
-                  <>
-                    {geographies.map(geo => (
-                      <Geography
-                        key={geo.rsmKey}
-                        geography={geo}
-                        fill="#cde4ef"
-                      />
-                    ))}
-                  </>
-                )}
-              </Geographies>
-              
-              {
-                annotations[dataset[tabIndex]] && 
-                annotations[dataset[tabIndex]].map(({city, dx, dy, textAnchor, content}) => {
-                  let annotations_y = -10
-                  return (
-                    <Annotation
-                      key={`${city}-${content}`}
-                      subject={coordinates[city]}
-                      dx={dx}
-                      dy={dy}
-                      connectorProps={{
-                        stroke: "#FF5533",
-                        strokeWidth: 1,
-                        strokeLinecap: "round",
-                        strokeDasharray: "4",
-                      }}
-                    >  
-                      {
-                        content.map((c) => {
-                          annotations_y += 12;
-                          return(
-                          <text
-                            y={annotations_y}
-                            textAnchor={textAnchor}
-                            alignmentBaseline="middle"
-                            fill="#F53"
-                            style={{
-                              fontFamily: "system-ui",
-                              fill: "#f26522",
-                              fontSize: ".6rem",
-                              fontWeight: "600",
-                            }}>
-                            {c}
-                          </text>
-                        )})
-                      }
-                    </Annotation>
-                  )
-                })
-              }
+          { tabIndex === 2 && <MapPhase3 />}
+          { tabIndex !== 2 && 
+          <ComposableMap projection="geoAlbersUsa">
+            <Geographies geography={geoUrl[dataset[tabIndex]]}>
+              {({ geographies }) => (
+                <>
+                  {geographies.map(geo => (
+                    <Geography
+                      key={geo.rsmKey}
+                      geography={geo}
+                      fill="#cde4ef"
+                    />
+                  ))}
+                </>
+              )}
+            </Geographies>
+            
+            {
+              annotations[dataset[tabIndex]] && 
+              annotations[dataset[tabIndex]].map(({city, dx, dy, textAnchor, content}) => {
+                let annotations_y = -10
+                return (
+                  <Annotation
+                    key={`${city}-${content}`}
+                    subject={coordinates[city]}
+                    dx={dx}
+                    dy={dy}
+                    connectorProps={{
+                      stroke: "#FF5533",
+                      strokeWidth: 1,
+                      strokeLinecap: "round",
+                      strokeDasharray: "4",
+                    }}
+                  >  
+                    {
+                      content.map((c) => {
+                        annotations_y += 12;
+                        return(
+                        <text
+                          y={annotations_y}
+                          textAnchor={textAnchor}
+                          alignmentBaseline="middle"
+                          fill="#F53"
+                          style={{
+                            fontFamily: "system-ui",
+                            fill: "#f26522",
+                            fontSize: ".6rem",
+                            fontWeight: "600",
+                          }}>
+                          {c}
+                        </text>
+                      )})
+                    }
+                  </Annotation>
+                )
+              })
+            }
 
-              {lines[dataset[tabIndex]].map(({ from, to }) => (
-                <Line
-                  key={`line-${from}-to-${to}`}
-                  from={coordinates[from]}
-                  to={coordinates[to]}
-                  stroke="#27aae1"
-                  strokeWidth={2.5}
-                  strokeLinecap="round"
-                />
-              ))}
+            {lines[dataset[tabIndex]].map(({ from, to }) => (
+              <Line
+                key={`line-${from}-to-${to}`}
+                from={coordinates[from]}
+                to={coordinates[to]}
+                stroke="#27aae1"
+                strokeWidth={2.5}
+                strokeLinecap="round"
+              />
+            ))}
+
+          {
+            lines_super[dataset[tabIndex]] &&
+            lines_super[dataset[tabIndex]].map(({ from, to }) => (
+              <Line
+                key={`super-line-${from}-to-${to}`}
+                from={coordinates[from]}
+                to={coordinates[to]}
+                stroke="#ffde17"
+                strokeWidth={10}
+                strokeLinecap="round"
+              />
+            ))
+            }
+
+            {core_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
+              <Marker key={name} coordinates={coordinates[name]}>
+                <circle r={8} fill="#27aae1" />
+                <text
+                  textAnchor="middle"
+                  y={markerOffset}
+                  style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".8rem", fontWeight: "600" }}
+                >
+                  {name}
+                </text>
+              </Marker>
+            ))}
 
             {
-              lines_super[dataset[tabIndex]] &&
-              lines_super[dataset[tabIndex]].map(({ from, to }) => (
-                <Line
-                  key={`super-line-${from}-to-${to}`}
-                  from={coordinates[from]}
-                  to={coordinates[to]}
-                  stroke="#ffde17"
-                  strokeWidth={10}
-                  strokeLinecap="round"
-                />
-              ))
-              }
-
-              {core_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
+              edge_nodes[dataset[tabIndex]] &&
+              edge_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
                 <Marker key={name} coordinates={coordinates[name]}>
-                  <circle r={8} fill="#27aae1" />
+                  <g transform="translate(-12, -24)">
+                    <circle cx="12" cy="10" r="5" fill="#f26522" />
+                  </g>
                   <text
                     textAnchor="middle"
                     y={markerOffset}
-                    style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".8rem", fontWeight: "600" }}
+                    style={{ fontFamily: "system-ui", fill: "#f26522", fontSize: ".6rem", fontWeight: "600" }}
                   >
                     {name}
                   </text>
                 </Marker>
-              ))}
-
-              {
-                edge_nodes[dataset[tabIndex]] &&
-                edge_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
-                  <Marker key={name} coordinates={coordinates[name]}>
-                    <g transform="translate(-12, -24)">
-                      <circle cx="12" cy="10" r="5" fill="#f26522" />
-                    </g>
-                    <text
-                      textAnchor="middle"
-                      y={markerOffset}
-                      style={{ fontFamily: "system-ui", fill: "#f26522", fontSize: ".6rem", fontWeight: "600" }}
-                    >
-                      {name}
-                    </text>
-                  </Marker>
-                ))
-              }
-          </ZoomableGroup>
-        </ComposableMap>
+              ))
+            }
+      </ComposableMap>
+        }
       </Module>
     )
 }
