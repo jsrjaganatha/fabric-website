@@ -12,6 +12,8 @@ import {
 } from "react-simple-maps";
 
 import { MapPhase3 } from './map-phase-3'
+import fabricMapLegend1 from "../../images/fabric-map/map-legend-phase1.png"
+import fabricMapLegend2 from "../../images/fabric-map/map-legend-phase2.png"
 
 const geoUrl = {
   "phase1": "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json",
@@ -406,6 +408,8 @@ export const MapModule = props => {
             }
       </ComposableMap>
         }
+        { tabIndex === 0 && <img src={fabricMapLegend1} alt="" style={{ width: "80%" }} /> }
+        { tabIndex === 1 && <img src={fabricMapLegend2} alt="" style={{ width: "80%" }} /> }
       </Module>
     )
 }

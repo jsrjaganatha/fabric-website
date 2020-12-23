@@ -93,7 +93,7 @@ export const MapPhase3 = props => {
       projection="geoEqualEarth"
       projectionConfig={{
         scale: 350,
-        center: [ -60, 20]
+        center: [ -60, 20],
       }}
     >
     <ZoomableGroup zoom={1}>
