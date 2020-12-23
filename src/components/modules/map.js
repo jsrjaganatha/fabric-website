@@ -217,8 +217,8 @@ const annotations = {
     },
     {
       city: "Washington",
-      dx: 30,
-      dy: 80,
+      dx: -25,
+      dy: 50,
       textAnchor: "start",
       content: [
         "3ROX",
@@ -250,6 +250,34 @@ const annotations = {
   ],
   "fab": [],
 }
+
+const annotations_super = {
+  "phase1": [],
+  "phase2": [
+    {
+    city: "San Diego",
+    dx: 50,
+    dy: 60,
+    textAnchor: "start",
+    content: [
+      "Internet2",
+      "AWS",
+    ]
+  },
+  {
+    city: "Washington",
+    dx: 50,
+    dy: 60,
+    textAnchor: "start",
+    content: [
+      "Internet2",
+      "AWS",
+    ]
+  },
+],
+  "fab": [],
+}
+
 
 const Tabs = styled.article`
     display: flex;
@@ -343,6 +371,46 @@ export const MapModule = props => {
                               fill: "#f26522",
                               fontSize: ".6rem",
                               fontWeight: "600",
+                            }}>
+                            {c}
+                          </text>
+                        )})
+                      }
+                    </Annotation>
+                  )
+                })
+              }
+
+              {
+                annotations_super[dataset[tabIndex]] && 
+                annotations_super[dataset[tabIndex]].map(({city, dx, dy, textAnchor, content}) => {
+                  let annotations_y = -10
+                  return (
+                    <Annotation
+                      key={`${city}-${content}`}
+                      subject={coordinates[city]}
+                      dx={dx}
+                      dy={dy}
+                      connectorProps={{
+                        stroke: "#d24502",
+                        strokeWidth: 2,
+                        strokeLinecap: "round",
+                      }}
+                    >  
+                      {
+                        content.map((c) => {
+                          annotations_y += 15;
+                          return(
+                          <text
+                            y={annotations_y}
+                            textAnchor={textAnchor}
+                            alignmentBaseline="middle"
+                            fill="#d24502"
+                            style={{
+                              fontFamily: "system-ui",
+                              fill: "#d24502",
+                              fontSize: ".7rem",
+                              fontWeight: "700",
                             }}>
                             {c}
                           </text>
