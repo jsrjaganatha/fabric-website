@@ -8,6 +8,8 @@ import {
   ZoomableGroup,
 } from "react-simple-maps";
 
+import fabricMapLegend3 from "../../images/fabric-map/map-legend-phase3.png"
+
 const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
 const coordinates = {
@@ -89,11 +91,14 @@ const lines_super = [
 
 export const MapPhase3 = props => {
   return (
+    <div style={{marginTop: "2rem"}}>
     <ComposableMap
       projection="geoEqualEarth"
+      width="800"
+      height="450"
       projectionConfig={{
         scale: 350,
-        center: [ -60, 20],
+        center: [ -60, 30],
       }}
     >
     <ZoomableGroup zoom={1}>
@@ -179,5 +184,7 @@ export const MapPhase3 = props => {
     ))}
     </ZoomableGroup>
   </ComposableMap>
+  <img src={fabricMapLegend3} alt="" style={{ width: "80%" }} /> 
+ </div>
   )
 }
