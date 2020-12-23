@@ -14,6 +14,7 @@ import {
 import { MapPhase3 } from './map-phase-3'
 import fabricMapLegend1 from "../../images/fabric-map/map-legend-phase1.png"
 import fabricMapLegend2 from "../../images/fabric-map/map-legend-phase2.png"
+import ReactTooltip from "react-tooltip";
 
 const geoUrl = {
   "phase1": "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json",
@@ -252,7 +253,7 @@ const annotations = {
 
 const Tabs = styled.article`
     display: flex;
-    margin: 6rem 0 0 0;
+    margin: 0;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -262,11 +263,11 @@ const Tab = styled(Button)`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    transition: transform 250ms ease-out;
+    : transform 250ms ease-out;
     cursor: pointer;
     padding: ${ props => props.compact ? '0.25rem' : '0.5rem 1rem' };
     margin: 0 0.25rem;
-    border-width: 1px 1px 0 1px;
+    border-width: 1px;
     border-style: solid;
     border-color: var(--color-primary);
     border-radius: 0;
@@ -287,129 +288,132 @@ export const MapModule = props => {
     const dataset = ["phase1", "phase2", "fab"]
     const handleToggleTab = newIndex => event => setTabIndex(newIndex)
     return (
-      <Module title="Anticipated FABRIC Topology">
+      <Module title="Anticipated FABRIC Topology" class="fabric-map-container">
           <Tabs>
             <Tab key="map-phase-1" onClick={ handleToggleTab(0) } active={ tabIndex === 0 }>Phase 1</Tab>
             <Tab key="map-phase-2" onClick={ handleToggleTab(1) } active={ tabIndex === 1 }>Phase 2</Tab>
             <Tab key="map-phase-3" onClick={ handleToggleTab(2) } active={ tabIndex === 2 }>FABRIC Across Borders</Tab>
           </Tabs>
-          { tabIndex === 2 && <MapPhase3 />}
-          { tabIndex !== 2 && 
-          <ComposableMap projection="geoAlbersUsa">
-            <Geographies geography={geoUrl[dataset[tabIndex]]}>
-              {({ geographies }) => (
-                <>
-                  {geographies.map(geo => (
-                    <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      fill="#cde4ef"
-                    />
-                  ))}
-                </>
-              )}
-            </Geographies>
-            
-            {
-              annotations[dataset[tabIndex]] && 
-              annotations[dataset[tabIndex]].map(({city, dx, dy, textAnchor, content}) => {
-                let annotations_y = -10
-                return (
-                  <Annotation
-                    key={`${city}-${content}`}
-                    subject={coordinates[city]}
-                    dx={dx}
-                    dy={dy}
-                    connectorProps={{
-                      stroke: "#FF5533",
-                      strokeWidth: 1,
-                      strokeLinecap: "round",
-                      strokeDasharray: "4",
-                    }}
-                  >  
-                    {
-                      content.map((c) => {
-                        annotations_y += 12;
-                        return(
-                        <text
-                          y={annotations_y}
-                          textAnchor={textAnchor}
-                          alignmentBaseline="middle"
-                          fill="#F53"
-                          style={{
-                            fontFamily: "system-ui",
-                            fill: "#f26522",
-                            fontSize: ".6rem",
-                            fontWeight: "600",
-                          }}>
-                          {c}
-                        </text>
-                      )})
-                    }
-                  </Annotation>
-                )
-              })
-            }
+          <div class="fabric-map">
+            { tabIndex === 2 && <MapPhase3 />}
+            { tabIndex !== 2 && 
+            <ComposableMap projection="geoAlbersUsa">
+              <Geographies geography={geoUrl[dataset[tabIndex]]}>
+                {({ geographies }) => (
+                  <>
+                    {geographies.map(geo => (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        fill="#cde4ef"
+                      />
+                    ))}
+                  </>
+                )}
+              </Geographies>
+              
+              {
+                annotations[dataset[tabIndex]] && 
+                annotations[dataset[tabIndex]].map(({city, dx, dy, textAnchor, content}) => {
+                  let annotations_y = -10
+                  return (
+                    <Annotation
+                      key={`${city}-${content}`}
+                      subject={coordinates[city]}
+                      dx={dx}
+                      dy={dy}
+                      connectorProps={{
+                        stroke: "#FF5533",
+                        strokeWidth: 1,
+                        strokeLinecap: "round",
+                        strokeDasharray: "4",
+                      }}
+                    >  
+                      {
+                        content.map((c) => {
+                          annotations_y += 12;
+                          return(
+                          <text
+                            y={annotations_y}
+                            textAnchor={textAnchor}
+                            alignmentBaseline="middle"
+                            fill="#F53"
+                            style={{
+                              fontFamily: "system-ui",
+                              fill: "#f26522",
+                              fontSize: ".6rem",
+                              fontWeight: "600",
+                            }}>
+                            {c}
+                          </text>
+                        )})
+                      }
+                    </Annotation>
+                  )
+                })
+              }
 
-            {lines[dataset[tabIndex]].map(({ from, to }) => (
-              <Line
-                key={`line-${from}-to-${to}`}
-                from={coordinates[from]}
-                to={coordinates[to]}
-                stroke="#27aae1"
-                strokeWidth={2.5}
-                strokeLinecap="round"
-              />
-            ))}
-
-          {
-            lines_super[dataset[tabIndex]] &&
-            lines_super[dataset[tabIndex]].map(({ from, to }) => (
-              <Line
-                key={`super-line-${from}-to-${to}`}
-                from={coordinates[from]}
-                to={coordinates[to]}
-                stroke="#ffde17"
-                strokeWidth={10}
-                strokeLinecap="round"
-              />
-            ))
-            }
-
-            {core_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
-              <Marker key={name} coordinates={coordinates[name]}>
-                <circle r={8} fill="#27aae1" />
-                <text
-                  textAnchor="middle"
-                  y={markerOffset}
-                  style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".8rem", fontWeight: "600" }}
-                >
-                  {name}
-                </text>
-              </Marker>
-            ))}
+              {lines[dataset[tabIndex]].map(({ from, to }) => (
+                <Line
+                  key={`line-${from}-to-${to}`}
+                  from={coordinates[from]}
+                  to={coordinates[to]}
+                  stroke="#27aae1"
+                  strokeWidth={2.5}
+                  strokeLinecap="round"
+                />
+              ))}
 
             {
-              edge_nodes[dataset[tabIndex]] &&
-              edge_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
-                <Marker key={name} coordinates={coordinates[name]}>
-                  <g transform="translate(-12, -24)">
-                    <circle cx="12" cy="10" r="5" fill="#f26522" />
-                  </g>
+              lines_super[dataset[tabIndex]] &&
+              lines_super[dataset[tabIndex]].map(({ from, to }) => (
+                <Line
+                  key={`super-line-${from}-to-${to}`}
+                  from={coordinates[from]}
+                  to={coordinates[to]}
+                  stroke="#ffde17"
+                  strokeWidth={10}
+                  strokeLinecap="round"
+                />
+              ))
+              }
+
+              {core_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
+                <Marker key={name} coordinates={coordinates[name]} data-tip="Core Connectors: 10">
+                  <circle r={8} fill="#27aae1" />
                   <text
                     textAnchor="middle"
                     y={markerOffset}
-                    style={{ fontFamily: "system-ui", fill: "#f26522", fontSize: ".6rem", fontWeight: "600" }}
+                    style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".8rem", fontWeight: "600" }}
                   >
                     {name}
                   </text>
                 </Marker>
-              ))
-            }
-      </ComposableMap>
+              ))}
+
+              {
+                edge_nodes[dataset[tabIndex]] &&
+                edge_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
+                  <Marker key={name} coordinates={coordinates[name]}>
+                    <g transform="translate(-12, -24)">
+                      <circle cx="12" cy="10" r="5" fill="#f26522" />
+                    </g>
+                    <text
+                      textAnchor="middle"
+                      y={markerOffset}
+                      style={{ fontFamily: "system-ui", fill: "#f26522", fontSize: ".6rem", fontWeight: "600" }}
+                    >
+                      {name}
+                    </text>
+                  </Marker>
+                ))
+              }
+        </ComposableMap>
         }
+        </div>
         { tabIndex === 0 && <img src={fabricMapLegend1} alt="" style={{ width: "80%" }} /> }
         { tabIndex === 1 && <img src={fabricMapLegend2} alt="" style={{ width: "80%" }} /> }
+        <ReactTooltip />
       </Module>
     )
 }
