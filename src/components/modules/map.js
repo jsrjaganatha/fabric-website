@@ -19,35 +19,48 @@ import ReactTooltip from "react-tooltip";
 const geoUrl = {
   "phase1": "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json",
   "phase2": "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json",
-  "fab": "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json",
 };
 
 const coordinates = {
-  "Dallas": [-96.7970, 32.7767],
   "Salt Lake City": [-111.891045, 40.760780],
   "Kansas City": [-94.5786, 39.0997],
   "New York": [-74.005974, 40.712776],
   "Atlanta": [-84.3880, 33.7490],
   "Seattle": [-122.3321, 47.6062],
-  "San Diego": [-117.1611, 32.7157],
-  // "Dallas": [-95.3698, 29.7604],
   "LEARN": [-95.3698, 29.7604],
   "STARLIGHT": [-87.6173, 41.8962],
   "Washington": [-77.0369, 38.9072],
-  "TACC": [-97.743057, 30.267153],
-  "CHAMELEON": [-87.6298, 41.8781],
-  "PSC": [-79.9959, 40.4406],
-  "COSMOS": [-74.4518, 40.4862],
   "MGHPCC": [-72.6162, 42.2043],
-  "NCSA": [-88.207458, 40.112461],
   "SDSC": [-117.2713, 32.8328],
-  "LBNL": [-122.2730, 37.8715],
   "MAX": [-77.1773, 38.9339],
-  "Chicago": [-87.6173, 41.8962],
-  "Tokyo": [-139.6503, 35.6762],
-  "Bristol": [-2.5879, 51.4545],
-  "Amsterdam": [4.9041, 52.3676],
-  "Geneva": [6.1432, 46.2044],
+  "Chicago/Starlight": [-87.6173, 41.8962],
+  // not actuall coordinates (for display purpose):
+  "FIU/AMPATH": [-81.1918, 27.2617],
+  "San Diego": [-116.1611, 34.7157],
+  "LBNL": [-122.2730, 37.8715],
+  "SRI/Stanford": [-121.1697, 36.4275],
+  "UCSD/SDSC": [-117.1611, 32.7157],
+  "SDSC": [-116.8611, 32.7157],
+  "Utah": [-113.9019, 40.8938],
+  "CLOUDLAB/POWDER": [-113.9019, 40.9938],
+  "GPN": [-94.5786, 41.0997],
+  "Dallas": [-95.3698, 29.7604],
+  "TACC": [-97.743057, 32.267153],
+  "LEARN": [-98.3987, 29.0889],
+  "Indiana": [-91.8173, 42.5062],
+  "UKY": [-92.6173, 44.2062],
+  "UMich": [-90.5073, 43.8962],
+  "NCSA": [-88.207458, 44.3125],
+  "Ga Tech/SOX": [-83.8880, 35.5490],
+  "Clemson": [-81.8374, 33.0834],
+  "PSC": [-77.9959, 40.4406],
+  "RENCI": [-80.1077, 38.0525],
+  "MAX": [-77.8077, 36.3525],
+  "Rutgers": [-75.6162, 42.2043],
+  "Princeton": [-74.6162, 43.2043],
+  "UMass": [-72.6162, 42.2043],
+  "CHAMELEON": [-86.6298, 41.8781],
+  "COSMOS": [-75.9162, 42.2043],
 }
 
 const core_nodes = {
@@ -58,34 +71,47 @@ const core_nodes = {
     { markerOffset: 20, name: "Washington" },
   ],
   "phase2": [
-    { markerOffset: -20, name: "Salt Lake City" },
-    { markerOffset: -20, name: "Kansas City" },
-    { markerOffset: -20, name: "New York" },
+    { markerOffset: 25, name: "Salt Lake City" },
+    { markerOffset: 25, name: "Kansas City" },
+    { markerOffset: 18, name: "New York" },
     { markerOffset: 25, name: "Atlanta" },
     { markerOffset: -20, name: "Seattle" },
-    { markerOffset: 25, name: "San Diego" },
+    { markerOffset: -15, name: "San Diego" },
     { markerOffset: 20, name: "Dallas" },
-    { markerOffset: -20, name: "Chicago" },
-    { markerOffset: 25, name: "Washington" },
-  ],
-  "fab": [
-    { markerOffset: -10, name: "New York" },
-    { markerOffset: -20, name: "Seattle" },
-    { markerOffset: -20, name: "Tokyo" },
-    { markerOffset: 20, name: "Bristol" },
-    { markerOffset: -10, name: "Amsterdam" },
-    { markerOffset: 20, name: "Geneva" },
-    { markerOffset: -20, name: "Salt Lake City" },
-    { markerOffset: -20, name: "Kansas City" },
-    { markerOffset: 25, name: "Atlanta" },
-    { markerOffset: 25, name: "San Diego" },
-    { markerOffset: 20, name: "Dallas" },
-    { markerOffset: -20, name: "Chicago" },
-    { markerOffset: 25, name: "Washington" },
+    { markerOffset: 20, name: "Chicago/Starlight" },
+    { markerOffset: 18, name: "Washington" },
   ],
 };
 
 const edge_nodes = {
+  "phase1": [
+    { markerOffset: -20, name: "LBNL" },
+  ],
+  "phase2": [
+    { markerOffset: 25, name: "FIU/AMPATH" },
+    { markerOffset: 15, name: "LBNL" },
+    { markerOffset: 15, name: "SRI/Stanford" },
+    { markerOffset: 15, name: "UCSD/SDSC" },
+    { markerOffset: 15, name: "Utah" },
+    { markerOffset: -10, name: "GPN" },
+    { markerOffset: 15, name: "TACC" },
+    { markerOffset: 15, name: "LEARN" },
+    { markerOffset: -8, name: "Indiana" },
+    { markerOffset: -8, name: "UKY" },
+    { markerOffset: -8, name: "UMich" },
+    { markerOffset: 12, name: "NCSA" },
+    { markerOffset: -10, name: "Ga Tech/SOX" },
+    { markerOffset: -10, name: "Clemson" },
+    { markerOffset: 12, name: "MAX" },
+    { markerOffset: 12, name: "RENCI" },
+    { markerOffset: 12, name: "PSC" },
+    { markerOffset: 10, name: "Rutgers" },
+    { markerOffset: -8, name: "Princeton" },
+    { markerOffset: 12, name: "UMass" },
+  ],
+};
+
+const facilities = {
   "phase1": [
     { markerOffset: 5, name: "TACC" },
     { markerOffset: 5, name: "NCSA" },
@@ -93,13 +119,16 @@ const edge_nodes = {
     { markerOffset: -25, name:"MAX" },
   ],
   "phase2": [
-    { markerOffset: 5, name: "TACC" },
-    { markerOffset: 5, name: "NCSA" },
-    { markerOffset: -25, name:"MGHPCC" },
+    { markerOffset: -25, name: "TACC" },
+    { markerOffset: -25, name: "NCSA" },
+    { markerOffset: -28, name:"MGHPCC" },
     { markerOffset: -25, name:"LBNL" },
-    { markerOffset: 5, name:"PSC" }
+    { markerOffset: -23, name:"PSC" },
+    { markerOffset: -25, name:"CLOUDLAB/POWDER" },
+    { markerOffset: -23, name:"SDSC" },
+    { markerOffset: -23, name:"CHAMELEON" },
+    { markerOffset: -23, name:"COSMOS" },
   ],
-  "fab": [],
 };
 
 const lines = {
@@ -109,175 +138,52 @@ const lines = {
     { from: "STARLIGHT", to: "Salt Lake City" },
   ],
   "phase2": [
+    // core - core
     { from: "Seattle", to: "Salt Lake City" },
     { from: "Seattle", to: "San Diego" },
     { from: "San Diego", to: "Salt Lake City" },
     { from: "San Diego", to: "Dallas" },
     { from: "Salt Lake City" , to: "Kansas City" },
     { from: "Dallas", to: "Atlanta" },
-    { from: "Kansas City", to: "Chicago" },
+    { from: "Kansas City", to: "Chicago/Starlight" },
     { from: "Kansas City", to: "Dallas" },
-    { from: "Chicago", to: "Atlanta" },
-    { from: "Chicago", to: "Washington" },
-    { from: "Chicago", to: "New York" },
+    { from: "Chicago/Starlight", to: "Atlanta" },
+    { from: "Chicago/Starlight", to: "Washington" },
+    { from: "Chicago/Starlight", to: "New York" },
     { from: "Washington", to: "New York"},
     { from: "Washington", to: "Atlanta"},
-  ],
-  "fab": [
-    { from: "Seattle", to: "Tokyo" },
-    { from: "New York", to: "Bristol" },
-    { from: "New York", to: "Amsterdam" },
-    { from: "New York", to: "Geneva" },
-    { from: "Seattle", to: "Salt Lake City" },
-    { from: "Seattle", to: "San Diego" },
-    { from: "San Diego", to: "Salt Lake City" },
-    { from: "San Diego", to: "Dallas" },
-    { from: "Salt Lake City" , to: "Kansas City" },
-    { from: "Dallas", to: "Atlanta" },
-    { from: "Kansas City", to: "Chicago" },
-    { from: "Kansas City", to: "Dallas" },
-    { from: "Chicago", to: "Atlanta" },
-    { from: "Chicago", to: "Washington" },
-    { from: "Chicago", to: "New York" },
-    { from: "Washington", to: "New York"},
-    { from: "Washington", to: "Atlanta"},
+    { from: "FIU/AMPATH",to: "Atlanta"},
+    // core - edge
+    { from: "LBNL",to: "San Diego"},
+    { from: "SRI/Stanford",to: "San Diego"},
+    { from: "UCSD/SDSC",to: "San Diego"},
+    { from: "Utah", to: "Salt Lake City" },
+    { from: "Kansas City", to: "GPN" },
+    { from: "TACC", to: "Dallas" },
+    { from: "LEARN", to: "Dallas" },
+    { from: "Chicago/Starlight", to: "Indiana" },
+    { from: "Chicago/Starlight", to: "UKY" },
+    { from: "Chicago/Starlight", to: "UMich" },
+    { from: "Chicago/Starlight", to: "NCSA" },
+    { from: "Clemson", to: "Atlanta"},
+    { from: "Ga Tech/SOX", to: "Atlanta"},
+    { from: "PSC", to: "Washington" },
+    { from: "RENCI", to: "Washington" },
+    { from: "MAX", to: "Washington" },
+    { from: "Rutgers", to: "New York" },
+    { from: "Princeton", to: "New York" },
+    { from: "UMass", to: "New York" },
   ],
 }
 
 const lines_super = {
   "phase1": [],
   "phase2": [
-    { from: "Chicago", to:  "Washington" },
-    { from: "Dallas", to: "Chicago" },
+    { from: "Chicago/Starlight", to:  "Washington" },
+    { from: "Dallas", to: "Chicago/Starlight" },
     { from: "San Diego", to: "Dallas" },
   ],
-  "fab": [],
 }
-
-const annotations = {
-  "phase1": [],
-  "phase2": [
-    {
-      city: "Chicago",
-      dx: -50,
-      dy: -80,
-      textAnchor: "end",
-      content: [
-        "STARLIGHT",
-        "CHAMELEON",
-        "MERIT",
-        "WISCNET",
-        "KYRON"
-      ]
-    },
-    {
-      city: "Salt Lake City",
-      dx: 40,
-      dy: 40,
-      textAnchor: "start",
-      content: [
-        "UEN",
-        "CLOUDLAB",
-        "POWDER",
-      ]
-    },
-    {
-      city: "San Diego",
-      dx: 40,
-      dy: -25,
-      textAnchor: "start",
-      content: [
-        "SDSC",
-        "PRP/NRP",
-        "CENIC",
-      ]
-    },
-    {
-      city: "Atlanta",
-      dx: 40,
-      dy: 20,
-      textAnchor: "start",
-      content: [
-        "AMLIGHT",
-        "SOX",
-        "FLR",
-      ]
-    },
-    {
-      city: "New York",
-      dx: 20,
-      dy: 30,
-      textAnchor: "start",
-      content: [
-        "COSMOS",
-        "NYSERNET",
-        "NEREN",
-        "NJEDGE"
-      ]
-    },
-    {
-      city: "Washington",
-      dx: -25,
-      dy: 50,
-      textAnchor: "start",
-      content: [
-        "3ROX",
-        "MAX",
-        "WIX",
-        "KINBER",
-        "NCREN"
-      ]
-    },
-    {
-      city: "Kansas City",
-      dx: -30,
-      dy: 30,
-      textAnchor: "end",
-      content: [
-        "FRGP",
-        "GPN",
-      ]
-    },
-    {
-      city: "Dallas",
-      dx: 35,
-      dy: 10,
-      textAnchor: "start",
-      content: [
-        "LEARN",
-      ]
-    },
-  ],
-  "fab": [],
-}
-
-const annotations_super = {
-  "phase1": [],
-  "phase2": [
-    {
-    city: "San Diego",
-    dx: 50,
-    dy: 60,
-    textAnchor: "start",
-    content: [
-      "Internet2",
-      "AWS",
-    ]
-  },
-  {
-    city: "Washington",
-    dx: 50,
-    dy: 60,
-    textAnchor: "start",
-    content: [
-      "Internet2",
-      "AWS",
-    ]
-  },
-],
-  "fab": [],
-}
-
 
 const Tabs = styled.article`
     display: flex;
@@ -313,7 +219,7 @@ const Tab = styled(Button)`
 
 export const MapModule = props => {
     const [tabIndex, setTabIndex] = useState(1)
-    const dataset = ["phase1", "phase2", "fab"]
+    const dataset = ["phase1", "phase2"]
     const handleToggleTab = newIndex => event => setTabIndex(newIndex)
     return (
       <Module title="Anticipated FABRIC Topology" class="fabric-map-container">
@@ -339,87 +245,6 @@ export const MapModule = props => {
                   </>
                 )}
               </Geographies>
-              
-              {
-                annotations[dataset[tabIndex]] && 
-                annotations[dataset[tabIndex]].map(({city, dx, dy, textAnchor, content}) => {
-                  let annotations_y = -10
-                  return (
-                    <Annotation
-                      key={`${city}-${content}`}
-                      subject={coordinates[city]}
-                      dx={dx}
-                      dy={dy}
-                      connectorProps={{
-                        stroke: "#FF5533",
-                        strokeWidth: 1,
-                        strokeLinecap: "round",
-                        strokeDasharray: "4",
-                      }}
-                    >  
-                      {
-                        content.map((c) => {
-                          annotations_y += 12;
-                          return(
-                          <text
-                            y={annotations_y}
-                            textAnchor={textAnchor}
-                            alignmentBaseline="middle"
-                            fill="#F53"
-                            style={{
-                              fontFamily: "system-ui",
-                              fill: "#f26522",
-                              fontSize: ".6rem",
-                              fontWeight: "600",
-                            }}>
-                            {c}
-                          </text>
-                        )})
-                      }
-                    </Annotation>
-                  )
-                })
-              }
-
-              {
-                annotations_super[dataset[tabIndex]] && 
-                annotations_super[dataset[tabIndex]].map(({city, dx, dy, textAnchor, content}) => {
-                  let annotations_y = -10
-                  return (
-                    <Annotation
-                      key={`${city}-${content}`}
-                      subject={coordinates[city]}
-                      dx={dx}
-                      dy={dy}
-                      connectorProps={{
-                        stroke: "#d24502",
-                        strokeWidth: 2,
-                        strokeLinecap: "round",
-                      }}
-                    >  
-                      {
-                        content.map((c) => {
-                          annotations_y += 15;
-                          return(
-                          <text
-                            y={annotations_y}
-                            textAnchor={textAnchor}
-                            alignmentBaseline="middle"
-                            fill="#d24502"
-                            style={{
-                              fontFamily: "system-ui",
-                              fill: "#d24502",
-                              fontSize: ".7rem",
-                              fontWeight: "700",
-                            }}>
-                            {c}
-                          </text>
-                        )})
-                      }
-                    </Annotation>
-                  )
-                })
-              }
 
               {lines[dataset[tabIndex]].map(({ from, to }) => (
                 <Line
@@ -448,11 +273,24 @@ export const MapModule = props => {
 
               {core_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
                 <Marker key={name} coordinates={coordinates[name]} data-tip="Core Connectors: 10">
-                  <circle r={8} fill="#27aae1" />
+                  <circle r={7} fill="#078ac1" />
                   <text
                     textAnchor="middle"
                     y={markerOffset}
-                    style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".8rem", fontWeight: "600" }}
+                    style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".7rem", fontWeight: "800" }}
+                  >
+                    {name}
+                  </text>
+                </Marker>
+              ))}
+
+              {edge_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
+                <Marker key={name} coordinates={coordinates[name]} data-tip="Core Connectors: 10">
+                  <circle r={5} fill="#27aae1" />
+                  <text
+                    textAnchor="middle"
+                    y={markerOffset}
+                    style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".6rem", fontWeight: "600" }}
                   >
                     {name}
                   </text>
@@ -460,11 +298,19 @@ export const MapModule = props => {
               ))}
 
               {
-                edge_nodes[dataset[tabIndex]] &&
-                edge_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
+                facilities[dataset[tabIndex]] &&
+                facilities[dataset[tabIndex]].map(({ name, markerOffset }) => (
                   <Marker key={name} coordinates={coordinates[name]}>
-                    <g transform="translate(-12, -24)">
-                      <circle cx="12" cy="10" r="5" fill="#f26522" />
+                    <g
+                      fill="none"
+                      stroke="#FF5533"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      transform="translate(-12, -24)"
+                    >
+                      <circle cx="12" cy="10" r="3" fill="#f26522"/>
+                      <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
                     </g>
                     <text
                       textAnchor="middle"

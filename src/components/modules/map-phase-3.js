@@ -38,6 +38,7 @@ const coordinates = {
   "LBNL": [-122.2730, 37.8715],
   "MAX": [-77.1773, 38.9339],
   "Chicago": [-87.6173, 41.8962],
+  "FIU": [-80.1918, 25.7617]
 }
 
 const international_nodes = [
@@ -57,6 +58,7 @@ const usa_core_nodes = [
   { markerOffset: 12, name: "Houston" },
   { markerOffset: -8, name: "Chicago" },
   { markerOffset: 12, name: "Washington" },
+  { markerOffset: 12, name: "FIU" },
 ]
 
 const international_lines = [
@@ -80,6 +82,7 @@ const usa_lines = [
   { from: "Chicago", to: "New York" },
   { from: "Washington", to: "New York"},
   { from: "Washington", to: "Atlanta"},
+  { from: "FIU", to: "Atlanta"},
 ]
 
 const lines_super = [
