@@ -45,7 +45,7 @@ const AboutFABPage = () => {
       <Subheading>Weather</Subheading>
       <Paragraph>
         Weather and Climate Prediction <br/>
-        University of Miami • FIU Center for Weather Forecast and Climatic Studies, Brazil
+        University of Miami • CPTECH Center for Weather Forecast and Climatic Studies, Brazil
       </Paragraph>
 
 
