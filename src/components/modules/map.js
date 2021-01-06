@@ -8,7 +8,6 @@ import {
   Geography,
   Marker,
   Line,
-  Annotation,
 } from "react-simple-maps";
 
 import { MapPhase3 } from './map-phase-3'
@@ -27,25 +26,25 @@ const coordinates = {
   "New York": [-74.005974, 40.712776],
   "Atlanta": [-84.3880, 33.7490],
   "Seattle": [-122.3321, 47.6062],
-  "LEARN": [-95.3698, 29.7604],
   "STARLIGHT": [-87.6173, 41.8962],
   "Washington": [-77.0369, 38.9072],
   "MGHPCC": [-72.6162, 42.2043],
-  "SDSC": [-117.2713, 32.8328],
-  "MAX": [-77.1773, 38.9339],
-  "Chicago/Starlight": [-87.6173, 41.8962],
+  "Starlight": [-87.6173, 41.8962],
   // not actuall coordinates (for display purpose):
   "FIU/AMPATH": [-81.1918, 27.2617],
   "San Diego": [-116.1611, 34.7157],
   "LBNL": [-122.2730, 37.8715],
   "SRI/Stanford": [-121.1697, 36.4275],
   "UCSD/SDSC": [-117.1611, 32.7157],
+  "UCSD": [-117.1611, 32.7157],
   "SDSC": [-116.8611, 32.7157],
   "Utah": [-113.9019, 40.8938],
   "CLOUDLAB/POWDER": [-113.9019, 40.9938],
+  "CLOUDLAB/POWDER/UEN": [-113.9019, 40.9938],
   "GPN": [-94.5786, 41.0997],
   "Dallas": [-95.3698, 29.7604],
   "TACC": [-97.743057, 32.267153],
+  "TACC/CHAMELEON": [-97.743057, 32.267153],
   "LEARN": [-98.3987, 29.0889],
   "Indiana": [-91.8173, 42.5062],
   "UKY": [-92.6173, 44.2062],
@@ -53,6 +52,7 @@ const coordinates = {
   "NCSA": [-88.207458, 44.3125],
   "Ga Tech/SOX": [-83.8880, 35.5490],
   "Clemson": [-81.8374, 33.0834],
+  "CLOUDLAB": [-81.8374, 33.0834],
   "PSC": [-77.9959, 40.4406],
   "RENCI": [-80.1077, 38.0525],
   "MAX": [-77.8077, 36.3525],
@@ -65,27 +65,40 @@ const coordinates = {
 
 const core_nodes = {
   "phase1": [
-    { markerOffset: -20, name: "Salt Lake City" },
+    { markerOffset: 25, name: "Salt Lake City" },
     { markerOffset: 20, name: "Dallas" },
-    { markerOffset: -20, name: "STARLIGHT" },
-    { markerOffset: 20, name: "Washington" },
+    { markerOffset: 20, name: "Starlight" },
+    { markerOffset: -15, name: "Washington" },
   ],
   "phase2": [
     { markerOffset: 25, name: "Salt Lake City" },
     { markerOffset: 25, name: "Kansas City" },
     { markerOffset: 18, name: "New York" },
-    { markerOffset: 25, name: "Atlanta" },
-    { markerOffset: -20, name: "Seattle" },
+    { markerOffset: 27, name: "Atlanta" },
+    { markerOffset: -15, name: "Seattle" },
     { markerOffset: -15, name: "San Diego" },
     { markerOffset: 20, name: "Dallas" },
-    { markerOffset: 20, name: "Chicago/Starlight" },
+    { markerOffset: 20, name: "Starlight" },
     { markerOffset: 18, name: "Washington" },
   ],
 };
 
 const edge_nodes = {
   "phase1": [
-    { markerOffset: -20, name: "LBNL" },
+    { markerOffset: 15, name: "LBNL" },
+    { markerOffset: 15, name: "RENCI" },
+    { markerOffset: -8, name: "UKY" },
+    { markerOffset: 25, name: "FIU/AMPATH" },
+    { markerOffset: -10, name: "NCSA" },
+    { markerOffset: -8, name: "UMich" },
+    { markerOffset: 15, name: "MAX" },
+    { markerOffset: 15, name: "Utah" },
+    { markerOffset: -10, name: "TACC" },
+    { markerOffset: 15, name: "UMass" },
+    { markerOffset: -10, name: "Ga Tech/SOX" },
+    { markerOffset: 15, name: "Clemson" },
+    { markerOffset: 15, name: "GPN" },
+    { markerOffset: -10, name: "UCSD" },
   ],
   "phase2": [
     { markerOffset: 25, name: "FIU/AMPATH" },
@@ -101,7 +114,7 @@ const edge_nodes = {
     { markerOffset: -8, name: "UMich" },
     { markerOffset: 12, name: "NCSA" },
     { markerOffset: -10, name: "Ga Tech/SOX" },
-    { markerOffset: -10, name: "Clemson" },
+    { markerOffset: 10, name: "Clemson" },
     { markerOffset: 12, name: "MAX" },
     { markerOffset: 12, name: "RENCI" },
     { markerOffset: 12, name: "PSC" },
@@ -113,13 +126,10 @@ const edge_nodes = {
 
 const facilities = {
   "phase1": [
-    { markerOffset: 5, name: "TACC" },
-    { markerOffset: 5, name: "NCSA" },
-    { markerOffset: 5, name: "LEARN" },
-    { markerOffset: -25, name:"MAX" },
+   { markerOffset: -25, name:"CLOUDLAB/POWDER/UEN" },
   ],
   "phase2": [
-    { markerOffset: -25, name: "TACC" },
+    { markerOffset: -25, name: "TACC/CHAMELEON" },
     { markerOffset: -25, name: "NCSA" },
     { markerOffset: -28, name:"MGHPCC" },
     { markerOffset: -25, name:"LBNL" },
@@ -128,14 +138,24 @@ const facilities = {
     { markerOffset: -23, name:"SDSC" },
     { markerOffset: -23, name:"CHAMELEON" },
     { markerOffset: -23, name:"COSMOS" },
+    { markerOffset: -25, name:"CLOUDLAB" },
   ],
 };
 
 const lines = {
   "phase1": [
+    // core - core
     { from: "STARLIGHT", to: "Washington" },
     { from: "STARLIGHT", to: "Dallas" },
     { from: "STARLIGHT", to: "Salt Lake City" },
+    // core - edge
+    { from: "RENCI", to: "Washington" },
+    { from: "MAX", to: "Washington" },
+    { from: "Starlight", to: "UKY" },
+    { from: "Starlight", to: "UMich" },
+    { from: "Starlight", to: "NCSA" },
+    { from: "TACC", to: "Dallas" },
+    { from: "Utah", to: "Salt Lake City" },
   ],
   "phase2": [
     // core - core
@@ -145,11 +165,11 @@ const lines = {
     { from: "San Diego", to: "Dallas" },
     { from: "Salt Lake City" , to: "Kansas City" },
     { from: "Dallas", to: "Atlanta" },
-    { from: "Kansas City", to: "Chicago/Starlight" },
+    { from: "Kansas City", to: "Starlight" },
     { from: "Kansas City", to: "Dallas" },
-    { from: "Chicago/Starlight", to: "Atlanta" },
-    { from: "Chicago/Starlight", to: "Washington" },
-    { from: "Chicago/Starlight", to: "New York" },
+    { from: "Starlight", to: "Atlanta" },
+    { from: "Starlight", to: "Washington" },
+    { from: "Starlight", to: "New York" },
     { from: "Washington", to: "New York"},
     { from: "Washington", to: "Atlanta"},
     { from: "FIU/AMPATH",to: "Atlanta"},
@@ -161,10 +181,10 @@ const lines = {
     { from: "Kansas City", to: "GPN" },
     { from: "TACC", to: "Dallas" },
     { from: "LEARN", to: "Dallas" },
-    { from: "Chicago/Starlight", to: "Indiana" },
-    { from: "Chicago/Starlight", to: "UKY" },
-    { from: "Chicago/Starlight", to: "UMich" },
-    { from: "Chicago/Starlight", to: "NCSA" },
+    { from: "Starlight", to: "Indiana" },
+    { from: "Starlight", to: "UKY" },
+    { from: "Starlight", to: "UMich" },
+    { from: "Starlight", to: "NCSA" },
     { from: "Clemson", to: "Atlanta"},
     { from: "Ga Tech/SOX", to: "Atlanta"},
     { from: "PSC", to: "Washington" },
@@ -179,8 +199,8 @@ const lines = {
 const lines_super = {
   "phase1": [],
   "phase2": [
-    { from: "Chicago/Starlight", to:  "Washington" },
-    { from: "Dallas", to: "Chicago/Starlight" },
+    { from: "Starlight", to:  "Washington" },
+    { from: "Dallas", to: "Starlight" },
     { from: "San Diego", to: "Dallas" },
   ],
 }
@@ -222,13 +242,13 @@ export const MapModule = props => {
     const dataset = ["phase1", "phase2"]
     const handleToggleTab = newIndex => event => setTabIndex(newIndex)
     return (
-      <Module title="Anticipated FABRIC Topology" class="fabric-map-container">
+      <Module title="Anticipated FABRIC Topology" className="fabric-map-container">
           <Tabs>
             <Tab key="map-phase-1" onClick={ handleToggleTab(0) } active={ tabIndex === 0 }>Phase 1</Tab>
             <Tab key="map-phase-2" onClick={ handleToggleTab(1) } active={ tabIndex === 1 }>Phase 2</Tab>
             <Tab key="map-phase-3" onClick={ handleToggleTab(2) } active={ tabIndex === 2 }>FABRIC Across Borders</Tab>
           </Tabs>
-          <div class="fabric-map">
+          <div className="fabric-map">
             { tabIndex === 2 && <MapPhase3 />}
             { tabIndex !== 2 && 
             <ComposableMap projection="geoAlbersUsa" width="800" height="500" >
@@ -252,7 +272,7 @@ export const MapModule = props => {
                   from={coordinates[from]}
                   to={coordinates[to]}
                   stroke="#27aae1"
-                  strokeWidth={2.5}
+                  strokeWidth={1}
                   strokeLinecap="round"
                 />
               ))}
@@ -265,7 +285,7 @@ export const MapModule = props => {
                   from={coordinates[from]}
                   to={coordinates[to]}
                   stroke="#ffde17"
-                  strokeWidth={10}
+                  strokeWidth={8}
                   strokeLinecap="round"
                 />
               ))
@@ -290,7 +310,7 @@ export const MapModule = props => {
                   <text
                     textAnchor="middle"
                     y={markerOffset}
-                    style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".6rem", fontWeight: "600" }}
+                    style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".5rem", fontWeight: "600" }}
                   >
                     {name}
                   </text>
@@ -315,7 +335,7 @@ export const MapModule = props => {
                     <text
                       textAnchor="middle"
                       y={markerOffset}
-                      style={{ fontFamily: "system-ui", fill: "#f26522", fontSize: ".6rem", fontWeight: "600" }}
+                      style={{ fontFamily: "system-ui", fill: "#f26522", fontSize: ".5rem", fontWeight: "600" }}
                     >
                       {name}
                     </text>
