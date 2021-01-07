@@ -15,194 +15,12 @@ import fabricMapLegend1 from "../../images/fabric-map/map-legend-phase1.png"
 import fabricMapLegend2 from "../../images/fabric-map/map-legend-phase2.png"
 import ReactTooltip from "react-tooltip";
 
+import { topomap } from "../../data/topomap.js"
+
 const geoUrl = {
   "phase1": "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json",
   "phase2": "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json",
 };
-
-const coordinates = {
-  "Salt Lake City": [-111.891045, 40.760780],
-  "Kansas City": [-94.5786, 39.0997],
-  "New York": [-74.005974, 40.712776],
-  "Atlanta": [-84.3880, 33.7490],
-  "Seattle": [-122.3321, 47.6062],
-  "STARLIGHT": [-87.6173, 41.8962],
-  "Washington": [-77.0369, 38.9072],
-  "MGHPCC": [-72.6162, 42.2043],
-  "Starlight": [-87.6173, 41.8962],
-  // not actuall coordinates (for display purpose):
-  "FIU&AMPATH": [-81.1918, 27.2617],
-  "San Diego": [-116.1611, 34.7157],
-  "LBNL": [-122.2730, 37.8715],
-  "SRI/Stanford": [-121.1697, 36.4275],
-  "UCSD&SDSC": [-117.1611, 32.7157],
-  "UCSD": [-117.1611, 32.7157],
-  "SDSC": [-116.8611, 32.7157],
-  "Utah": [-113.9019, 40.8938],
-  "CLOUDLAB&POWDER": [-113.9019, 40.9938],
-  "GPN": [-94.5786, 41.0997],
-  "Dallas": [-95.3698, 29.7604],
-  "TACC": [-97.743057, 32.267153],
-  "TACC&CHAMELEON": [-97.743057, 32.267153],
-  "LEARN": [-98.3987, 29.0889],
-  "Indiana": [-91.8173, 42.5062],
-  "UKY": [-92.6173, 44.2062],
-  "UMich": [-90.5073, 43.8962],
-  "NCSA": [-88.207458, 44.3125],
-  "Ga Tech/SOX": [-83.8880, 35.5490],
-  "Clemson": [-81.8374, 33.0834],
-  "CLOUDLAB": [-81.8374, 33.0834],
-  "PSC": [-77.9959, 40.4406],
-  "RENCI": [-80.1077, 38.0525],
-  "MAX": [-77.8077, 36.3525],
-  "Rutgers": [-75.6162, 42.2043],
-  "Princeton": [-74.6162, 43.2043],
-  "UMass": [-72.6162, 42.2043],
-  "CHAMELEON": [-86.6298, 41.8781],
-  "COSMOS": [-75.9162, 42.2043],
-}
-
-const core_nodes = {
-  "phase1": [
-    { markerOffset: 25, name: "Salt Lake City" },
-    { markerOffset: 20, name: "Dallas" },
-    { markerOffset: 20, name: "Starlight" },
-    { markerOffset: -15, name: "Washington" },
-  ],
-  "phase2": [
-    { markerOffset: 25, name: "Salt Lake City" },
-    { markerOffset: 25, name: "Kansas City" },
-    { markerOffset: 18, name: "New York" },
-    { markerOffset: 27, name: "Atlanta" },
-    { markerOffset: -15, name: "Seattle" },
-    { markerOffset: -15, name: "San Diego" },
-    { markerOffset: 20, name: "Dallas" },
-    { markerOffset: 20, name: "Starlight" },
-    { markerOffset: 18, name: "Washington" },
-  ],
-};
-
-const edge_nodes = {
-  "phase1": [
-    { markerOffset: 15, name: "LBNL" },
-    { markerOffset: 15, name: "RENCI" },
-    { markerOffset: -8, name: "UKY" },
-    { markerOffset: 25, name: "FIU&AMPATH" },
-    { markerOffset: -10, name: "NCSA" },
-    { markerOffset: -8, name: "UMich" },
-    { markerOffset: 15, name: "MAX" },
-    { markerOffset: 15, name: "Utah" },
-    { markerOffset: -10, name: "TACC" },
-    { markerOffset: 15, name: "UMass" },
-    { markerOffset: -10, name: "Ga Tech/SOX" },
-    { markerOffset: 15, name: "Clemson" },
-    { markerOffset: 15, name: "GPN" },
-    { markerOffset: -10, name: "UCSD" },
-  ],
-  "phase2": [
-    { markerOffset: 25, name: "FIU&AMPATH" },
-    { markerOffset: 15, name: "LBNL" },
-    { markerOffset: 15, name: "SRI/Stanford" },
-    { markerOffset: 15, name: "UCSD&SDSC" },
-    { markerOffset: 15, name: "Utah" },
-    { markerOffset: -10, name: "GPN" },
-    { markerOffset: 15, name: "TACC" },
-    { markerOffset: 15, name: "LEARN" },
-    { markerOffset: -8, name: "Indiana" },
-    { markerOffset: -8, name: "UKY" },
-    { markerOffset: -8, name: "UMich" },
-    { markerOffset: 12, name: "NCSA" },
-    { markerOffset: -10, name: "Ga Tech/SOX" },
-    { markerOffset: 10, name: "Clemson" },
-    { markerOffset: 12, name: "MAX" },
-    { markerOffset: 12, name: "RENCI" },
-    { markerOffset: 12, name: "PSC" },
-    { markerOffset: 10, name: "Rutgers" },
-    { markerOffset: -8, name: "Princeton" },
-    { markerOffset: 12, name: "UMass" },
-  ],
-};
-
-const facilities = {
-  "phase1": [
-   { markerOffset: -25, name:"CLOUDLAB&POWDER" },
-  ],
-  "phase2": [
-    { markerOffset: -25, name: "TACC&CHAMELEON" },
-    { markerOffset: -25, name: "NCSA" },
-    { markerOffset: -28, name:"MGHPCC" },
-    { markerOffset: -25, name:"LBNL" },
-    { markerOffset: -23, name:"PSC" },
-    { markerOffset: -25, name:"CLOUDLAB&POWDER" },
-    { markerOffset: -23, name:"SDSC" },
-    { markerOffset: -23, name:"CHAMELEON" },
-    { markerOffset: -23, name:"COSMOS" },
-    { markerOffset: -25, name:"CLOUDLAB" },
-  ],
-};
-
-const lines = {
-  "phase1": [
-    // core - core
-    { from: "STARLIGHT", to: "Washington" },
-    { from: "STARLIGHT", to: "Dallas" },
-    { from: "STARLIGHT", to: "Salt Lake City" },
-    // core - edge
-    { from: "RENCI", to: "Washington" },
-    { from: "MAX", to: "Washington" },
-    { from: "Starlight", to: "UKY" },
-    { from: "Starlight", to: "UMich" },
-    { from: "Starlight", to: "NCSA" },
-    { from: "TACC", to: "Dallas" },
-    { from: "Utah", to: "Salt Lake City" },
-  ],
-  "phase2": [
-    // core - core
-    { from: "Seattle", to: "Salt Lake City" },
-    { from: "Seattle", to: "San Diego" },
-    { from: "San Diego", to: "Salt Lake City" },
-    { from: "San Diego", to: "Dallas" },
-    { from: "Salt Lake City" , to: "Kansas City" },
-    { from: "Dallas", to: "Atlanta" },
-    { from: "Kansas City", to: "Starlight" },
-    { from: "Kansas City", to: "Dallas" },
-    { from: "Starlight", to: "Atlanta" },
-    { from: "Starlight", to: "Washington" },
-    { from: "Starlight", to: "New York" },
-    { from: "Washington", to: "New York"},
-    { from: "Washington", to: "Atlanta"},
-    { from: "FIU/AMPATH",to: "Atlanta"},
-    // core - edge
-    { from: "LBNL",to: "San Diego"},
-    { from: "SRI/Stanford",to: "San Diego"},
-    { from: "UCSD/SDSC",to: "San Diego"},
-    { from: "Utah", to: "Salt Lake City" },
-    { from: "Kansas City", to: "GPN" },
-    { from: "TACC", to: "Dallas" },
-    { from: "LEARN", to: "Dallas" },
-    { from: "Starlight", to: "Indiana" },
-    { from: "Starlight", to: "UKY" },
-    { from: "Starlight", to: "UMich" },
-    { from: "Starlight", to: "NCSA" },
-    { from: "Clemson", to: "Atlanta"},
-    { from: "Ga Tech/SOX", to: "Atlanta"},
-    { from: "PSC", to: "Washington" },
-    { from: "RENCI", to: "Washington" },
-    { from: "MAX", to: "Washington" },
-    { from: "Rutgers", to: "New York" },
-    { from: "Princeton", to: "New York" },
-    { from: "UMass", to: "New York" },
-  ],
-}
-
-const lines_super = {
-  "phase1": [],
-  "phase2": [
-    { from: "Starlight", to:  "Washington" },
-    { from: "Dallas", to: "Starlight" },
-    { from: "San Diego", to: "Dallas" },
-  ],
-}
 
 const Tabs = styled.article`
     display: flex;
@@ -211,7 +29,6 @@ const Tabs = styled.article`
     justify-content: center;
     width: 100%;
 `
-
 const Tab = styled(Button)`
     display: flex;
     justify-content: flex-start;
@@ -265,11 +82,11 @@ export const MapModule = props => {
                 )}
               </Geographies>
 
-              {lines[dataset[tabIndex]].map(({ from, to }) => (
+              {topomap.lines[dataset[tabIndex]].map(({ from, to }) => (
                 <Line
                   key={`line-${from}-to-${to}`}
-                  from={coordinates[from]}
-                  to={coordinates[to]}
+                  from={topomap.coordinates[from]}
+                  to={topomap.coordinates[to]}
                   stroke="#27aae1"
                   strokeWidth={1}
                   strokeLinecap="round"
@@ -277,12 +94,12 @@ export const MapModule = props => {
               ))}
 
             {
-              lines_super[dataset[tabIndex]] &&
-              lines_super[dataset[tabIndex]].map(({ from, to }) => (
+              topomap.lines_super[dataset[tabIndex]] &&
+              topomap.lines_super[dataset[tabIndex]].map(({ from, to }) => (
                 <Line
                   key={`super-line-${from}-to-${to}`}
-                  from={coordinates[from]}
-                  to={coordinates[to]}
+                  from={topomap.coordinates[from]}
+                  to={topomap.coordinates[to]}
                   stroke="#ffde17"
                   strokeWidth={8}
                   strokeLinecap="round"
@@ -290,8 +107,8 @@ export const MapModule = props => {
               ))
               }
 
-              {core_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
-                <Marker key={name} coordinates={coordinates[name]} data-tip="Core Connectors: 10">
+              {topomap.core_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
+                <Marker key={name} coordinates={topomap.coordinates[name]} data-tip="Core Connectors: 10">
                   <circle r={7} fill="#078ac1" />
                   <text
                     textAnchor="middle"
@@ -303,8 +120,8 @@ export const MapModule = props => {
                 </Marker>
               ))}
 
-              {edge_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
-                <Marker key={name} coordinates={coordinates[name]} data-tip="Core Connectors: 10">
+              {topomap.edge_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
+                <Marker key={name} coordinates={topomap.coordinates[name]} data-tip="Core Connectors: 10">
                   <circle r={5} fill="#27aae1" />
                   <text
                     textAnchor="middle"
@@ -317,9 +134,9 @@ export const MapModule = props => {
               ))}
 
               {
-                facilities[dataset[tabIndex]] &&
-                facilities[dataset[tabIndex]].map(({ name, markerOffset }) => (
-                  <Marker key={name} coordinates={coordinates[name]}>
+                topomap.facilities[dataset[tabIndex]] &&
+                topomap.facilities[dataset[tabIndex]].map(({ name, markerOffset }) => (
+                  <Marker key={name} coordinates={topomap.coordinates[name]}>
                     <g
                       fill="none"
                       stroke="#FF5533"
