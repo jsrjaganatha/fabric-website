@@ -10,18 +10,7 @@ const capailitiesQuery = graphql`
                         icon {
                             childImageSharp {
                                 fluid(maxWidth: 100) {
-                                    base64
-                                    tracedSVG
-                                    aspectRatio
-                                    src
-                                    srcSet
-                                    srcWebp
-                                    srcSetWebp
-                                    sizes
-                                    originalImg
-                                    originalName
-                                    presentationWidth
-                                    presentationHeight
+                                    ...GatsbyImageSharpFluid
                                 }
                             }
                         }
