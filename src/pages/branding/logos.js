@@ -8,7 +8,7 @@ import { Container, Col, Row } from 'react-grid-system'
 
 const LogoContainer = styled.div`
     background-color: ${ props => props.background ? props.background : 'transparent' };
-    border: 1px solid var(--color-dark);
+    border: 1px solid var(--color-black);
     border-radius: 0.25rem;
     padding: 1.5rem;
     display: flex;
@@ -57,7 +57,7 @@ const LogosPage = () => (
 
         <Module title="For Light Backgrounds">
             <Paragraph>
-                Each of the logos in this section has a transparent background and are optimized for use on light background colors.
+                Each of these logos has a transparent background and are optimized for use on light background colors.
             </Paragraph>
 
             <Container>
@@ -89,19 +89,19 @@ const LogosPage = () => (
 
         <Module title="For Dark Backgrounds">
             <Paragraph>
-                Each of the logos in this section has a transparent background and are optimized for use on dark background colors.
+                Each of these logos has a transparent background and are optimized for use on dark background colors.
             </Paragraph>
 
             <Container>
                 <Row>
                     <Col xs={ 12 } sm={ 4 }>
-                        <LogoBlock background="var(--color-dark)"
+                        <LogoBlock background="var(--color-black)"
                             url="https://www.dropbox.com/s/1gz57gt3tn7nxkh/2019_NRIG_FABRIC%20logo%20light.png?raw=1"
                             altText="Fabric logo with text below surface"
                         />
                     </Col>
                     <Col xs={ 12 } sm={ 4 }>
-                        <LogoBlock background="#330011"
+                        <LogoBlock background="var(--color-black)"
                             url="https://www.dropbox.com/s/mbuk7mgkrni17fe/2019_NRIG_Fabric%20light%20text%20right.png?raw=1"
                             altText="Fabric logo with text beside surface"
                         />
@@ -126,33 +126,33 @@ const LogosPage = () => (
 
         <Module title="For Light Backgrounds">
             <Paragraph>
-                Each of the logos in this section has a transparent background and are optimized for use on light background colors.
+                Each of these logos has a transparent background and are optimized for use on light background colors.
             </Paragraph>
 
             <Container>
                 <Row>
-                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
+                    <Col xs={ 12 } sm={ 6 }>
                         <LogoBlock
-                            url="https://www.dropbox.com/s/26lsgihw277bfgm/2019_NRIG_FABRIC%20logo%20Dark.png?raw=1"
-                            altText="Fabric logo with text below surface"
+                            url="https://www.dropbox.com/s/4cw1nuxsavva1u2/New%20FAB%20Official%20Logo_Color.png?raw=1"
+                            altText="FAB Globe with text - Color"
                         />
                     </Col>
-                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
+                    <Col xs={ 12 } sm={ 6 }>
                         <LogoBlock background="#eeefff"
-                            url="https://www.dropbox.com/s/p02zqsutv991iel/2019_NRIG_Fabric%20dark%20text%20right.png?raw=1"
-                            altText="Fabric logo with text beside surface"
+                            url="https://www.dropbox.com/s/v8k3spmrhpwknff/New%20FAB%20Official%20Logo_Dark.png?raw=1"
+                            altText="FAB Globe with text - Black only"
                         />
                     </Col>
-                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
+                    <Col xs={ 12 } sm={ 6 }>
                         <LogoBlock background="#bbddee"
-                            url="https://www.dropbox.com/s/8rnpjckb4auct03/2019_NRIG_Fabric%20dark%20wave.png?raw=1"
-                            altText="Fabric surface logo without text"
+                            url="https://www.dropbox.com/s/lns4mkwnd8oc71b/202101_FAB_globe%20icon%20color%40300x.png?raw=1"
+                            altText="FAB Globe"
                         />
                     </Col>
-                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
+                    <Col xs={ 12 } sm={ 6 }>
                         <LogoBlock background="#bbddee"
-                            url="https://www.dropbox.com/s/8rnpjckb4auct03/2019_NRIG_Fabric%20dark%20wave.png?raw=1"
-                            altText="Fabric surface logo without text"
+                            url="https://www.dropbox.com/s/iigjdmo4e81eink/202101_FAB_%20globe%20icon_DARK%40300x.png?raw=1"
+                            altText="FAB Globe"
                         />
                     </Col>
                 </Row>
@@ -163,33 +163,27 @@ const LogosPage = () => (
 
         <Module title="For Dark Backgrounds">
             <Paragraph>
-                Each of the logos in this section has a transparent background and are optimized for use on dark background colors.
+                Each of thes logos has a transparent background and are optimized for use on dark background colors.
             </Paragraph>
 
             <Container>
                 <Row>
-                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
-                        <LogoBlock
-                            url="https://www.dropbox.com/s/26lsgihw277bfgm/2019_NRIG_FABRIC%20logo%20Dark.png?raw=1"
-                            altText="Fabric logo with text below surface"
+                    <Col xs={ 12 } sm={ 6 }>
+                        <LogoBlock background="var(--color-black)"
+                            url="https://www.dropbox.com/s/7nydw2bxffkubji/New%20FAB%20Official%20Logo_light.png?raw=1"
+                            altText="FAB Globe"
                         />
                     </Col>
-                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
-                        <LogoBlock background="#eeefff"
-                            url="https://www.dropbox.com/s/p02zqsutv991iel/2019_NRIG_Fabric%20dark%20text%20right.png?raw=1"
-                            altText="Fabric logo with text beside surface"
+                    <Col xs={ 12 } sm={ 3 }>
+                        <LogoBlock background="var(--color-black)"
+                            url="https://www.dropbox.com/s/fa16l6knrgdhp9s/202101_FAB_Globe%20icon_light%40300x.png?raw=1"
+                            altText="FAB Globe"
                         />
                     </Col>
-                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
-                        <LogoBlock background="#bbddee"
-                            url="https://www.dropbox.com/s/8rnpjckb4auct03/2019_NRIG_Fabric%20dark%20wave.png?raw=1"
-                            altText="Fabric surface logo without text"
-                        />
-                    </Col>
-                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
-                        <LogoBlock background="#bbddee"
-                            url="https://www.dropbox.com/s/8rnpjckb4auct03/2019_NRIG_Fabric%20dark%20wave.png?raw=1"
-                            altText="Fabric surface logo without text"
+                    <Col xs={ 12 } sm={ 3 }>
+                        <LogoBlock background="var(--color-black)"
+                            url="https://www.dropbox.com/s/0vq767ba2ksd0b9/202101_FAB_Globe%20Icon_Color%20light%40300x.png?raw=1"
+                            altText="FAB Globe"
                         />
                     </Col>
                 </Row>
