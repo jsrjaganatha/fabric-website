@@ -5,18 +5,24 @@ import { SEO } from '../components/seo'
 import { Title, Heading, Paragraph } from '../components/typography'
 import HubspotForm from 'react-hubspot-form'
 import { HorizontalRule } from '../components/horizontal-rule'
+import { ExternalLink } from '../components/link'
 
 const Table = styled.table`
   border: 2px solid var(--color-primary-light);
+  font-size: 95%;
   & > thead {
     background-color: var(--color-primary);
     color: var(--color-white);
   }
-  & tr.event {
-    background-color: var(--color-primary-light);
+  & td, th {
+    padding: 0.5rem 1rem;
   }
-  & tr > th:first-child, tr > td:first-child {
-    padding-left: 1rem;
+  & tr.expired-note {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+  }
+  & tr.expired {
+    background-color: var(--color-lightgrey);
   }
 `
 
@@ -27,7 +33,7 @@ const solicitations = {
       url: 'https://www.nsf.gov/pubs/2021/nsf21528/nsf21528.htm',
     },
     {
-      name: 'Computer and Information Science and Engineering Minority-Serving Institutions Research Expansion Program (CISE-MSI Program)',
+      name: 'CISE-MSI Program',
       url: 'https://www.nsf.gov/pubs/2021/nsf21528/nsf21528.htm',
     },
     {
@@ -82,9 +88,20 @@ const GetInvolvedPage = () => (
       <tbody>
         {
           solicitations.current.map(({ name, url }, i) => (
-            <tr key={ i }>
+            <tr key={ i } className="current">
               <td>{ name }</td>
-              <td>{ url }</td>
+              <td><ExternalLink to={ url }>{ url }</ExternalLink></td>
+            </tr>
+          ))
+        }
+        <tr className="expired-note">
+          <td colspan="2"><em>Opportunities Below have Expired</em></td>
+        </tr>
+        {
+          solicitations.expired.map(({ name, url }, i) => (
+            <tr key={ i } className="expired">
+              <td>{ name }</td>
+              <td><ExternalLink to={ url }>{ url }</ExternalLink></td>
             </tr>
           ))
         }
