@@ -78,6 +78,7 @@ export const topomap = {
       { markerOffset: -10, name: "Ga Tech/SOX" },
       { markerOffset: 15, name: "Clemson" },
       { markerOffset: 15, name: "UCSD" },
+      { markerOffset: -10, name: "GPN" },
     ],
     "phase2": [
       { markerOffset: 25, name: "FIU&AMPATH" },
@@ -135,7 +136,6 @@ export const topomap = {
       // core - edge
       { from: "RENCI", to: "Washington" },
       { from: "MAX", to: "Washington" },
-      { from: "StarLight", to: "UKY" },
       { from: "StarLight", to: "UMich" },
       { from: "StarLight", to: "NCSA" },
       { from: "TACC", to: "Dallas" },
@@ -179,6 +179,19 @@ export const topomap = {
       { from: "UMass", to: "New York" },
     ],
   },
+  dotted_lines: [
+    { from: "Salt Lake City", to: "UCSD" },
+    { from: "Salt Lake City", to: "GPN" },
+    { from: "Dallas", to: "UCSD" },
+    { from: "LBNL", to: "UCSD" },
+    { from: "UKY", to: "StarLight" },
+    { from: "Dallas", to: "FIU&AMPATH" },
+    { from: "RENCI", to: "Washington" },
+    { from: "FIU&AMPATH", to: "Washington" },
+    { from: "Clemson", to: "Washington" },
+    { from: "Ga Tech/SOX", to: "Washington" },
+    { from: "UMass", to: "Washington" },
+  ],
   lines_super:{
     "phase1": [],
     "phase2": [

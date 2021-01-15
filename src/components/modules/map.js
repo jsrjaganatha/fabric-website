@@ -82,6 +82,18 @@ export const MapModule = props => {
                 )}
               </Geographies>
 
+              {
+                tabIndex === 0 && topomap.dotted_lines.map(({ from, to }) => (
+                  <Line
+                    key={`dotted-line-${from}-to-${to}`}
+                    from={topomap.coordinates[from]}
+                    to={topomap.coordinates[to]}
+                    stroke="#27aae1"
+                    strokeDasharray="3"
+                  />
+                ))
+              }
+
               {topomap.lines[dataset[tabIndex]].map(({ from, to }) => (
                 <Line
                   key={`line-${from}-to-${to}`}
