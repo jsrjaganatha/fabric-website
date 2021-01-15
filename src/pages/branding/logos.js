@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { AnimateOnMount } from '../../components/anim'
 import styled from 'styled-components'
 import { SEO } from '../../components/seo'
-import { Title, Paragraph } from '../../components/typography'
+import { Title, Heading, Paragraph } from '../../components/typography'
 import { Module } from '../../components/layout'
 import { Container, Col, Row } from 'react-grid-system'
 
@@ -45,7 +45,9 @@ const LogosPage = () => (
             keywords={ ["branding", "logos", "style"] }
         />
 
-        <Title>FABRIC Logos</Title>
+        <Title>Logos</Title>
+
+        <Heading>FABRIC</Heading>
         
         <Paragraph>
             We have a few different style and color variations on the FABRIC surface logo design available for download.
@@ -112,6 +114,85 @@ const LogosPage = () => (
                     </Col>
                 </Row>
                 <br/>
+            </Container>
+        </Module>
+
+        <Heading>FAB</Heading>
+        
+        <Paragraph>
+            Like the FABRIC logo, the FAB Globe logo comes in different variants to suit several use cases.
+            Note that each of the logos has a transparent background and are optimized for use on either light of dark background colors.
+        </Paragraph>
+
+        <Module title="For Light Backgrounds">
+            <Paragraph>
+                Each of the logos in this section has a transparent background and are optimized for use on light background colors.
+            </Paragraph>
+
+            <Container>
+                <Row>
+                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
+                        <LogoBlock
+                            url="https://www.dropbox.com/s/26lsgihw277bfgm/2019_NRIG_FABRIC%20logo%20Dark.png?raw=1"
+                            altText="Fabric logo with text below surface"
+                        />
+                    </Col>
+                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
+                        <LogoBlock background="#eeefff"
+                            url="https://www.dropbox.com/s/p02zqsutv991iel/2019_NRIG_Fabric%20dark%20text%20right.png?raw=1"
+                            altText="Fabric logo with text beside surface"
+                        />
+                    </Col>
+                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
+                        <LogoBlock background="#bbddee"
+                            url="https://www.dropbox.com/s/8rnpjckb4auct03/2019_NRIG_Fabric%20dark%20wave.png?raw=1"
+                            altText="Fabric surface logo without text"
+                        />
+                    </Col>
+                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
+                        <LogoBlock background="#bbddee"
+                            url="https://www.dropbox.com/s/8rnpjckb4auct03/2019_NRIG_Fabric%20dark%20wave.png?raw=1"
+                            altText="Fabric surface logo without text"
+                        />
+                    </Col>
+                </Row>
+            </Container>
+
+        </Module>
+
+
+        <Module title="For Dark Backgrounds">
+            <Paragraph>
+                Each of the logos in this section has a transparent background and are optimized for use on dark background colors.
+            </Paragraph>
+
+            <Container>
+                <Row>
+                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
+                        <LogoBlock
+                            url="https://www.dropbox.com/s/26lsgihw277bfgm/2019_NRIG_FABRIC%20logo%20Dark.png?raw=1"
+                            altText="Fabric logo with text below surface"
+                        />
+                    </Col>
+                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
+                        <LogoBlock background="#eeefff"
+                            url="https://www.dropbox.com/s/p02zqsutv991iel/2019_NRIG_Fabric%20dark%20text%20right.png?raw=1"
+                            altText="Fabric logo with text beside surface"
+                        />
+                    </Col>
+                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
+                        <LogoBlock background="#bbddee"
+                            url="https://www.dropbox.com/s/8rnpjckb4auct03/2019_NRIG_Fabric%20dark%20wave.png?raw=1"
+                            altText="Fabric surface logo without text"
+                        />
+                    </Col>
+                    <Col xs={ 12 } sm={ 6 } md={ 3 }>
+                        <LogoBlock background="#bbddee"
+                            url="https://www.dropbox.com/s/8rnpjckb4auct03/2019_NRIG_Fabric%20dark%20wave.png?raw=1"
+                            altText="Fabric surface logo without text"
+                        />
+                    </Col>
+                </Row>
             </Container>
         </Module>
 
