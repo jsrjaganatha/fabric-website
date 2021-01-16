@@ -7,21 +7,47 @@ assignees: ''
 
 ---
 
-To add an event to the FABRIC website, we'll need to gather a few bits of information about the event. The required event fields are title, date, location, URL, tags, whether the event is hosted by FABRIC, and the event description. For reference, specifications of each of these fields follow the list below.
+To add an event to the FABRIC website, we'll need to gather a few bits of information about the event. We'll need to know the event title, date, location, event or registration URL, desired tags, whether the event is hosted by FABRIC, and the event description. For reference, specifications of each of these fields are listed here. Enter field values at the very bottom
 
 ## Event Details
 
 Please enter the values of each of the fields below.
 
-- Event title: 
-- First date of event: 
-- Display date: 
-- Event Location: 
-- URL: 
-- Tags: 
-- Is this a FABRIC-hosted event?: 
-- Description:
+#### Event title
+
+< enter event title here >
+
+#### First date of event
+
+< enter event start date here, YYYY-MM-DD >
+
+#### Display date
+
+< enter date to display here >
+
+#### Event Location
+
+< enter event location >
+
+#### URL
+
+https://example.com/event
+
+#### Tags: 
+
+- any
+- relevant
+- tags
+
+#### Is this a FABRIC-hosted event?: 
+
+< true or false >
+
+#### Description:
+
+< enter event description here >
  
+
 ## Field Specifications
 
 #### Event title
