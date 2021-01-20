@@ -19,11 +19,11 @@ export const MapPhase3 = props => {
     <div style={{marginTop: "2rem"}}>
     <ComposableMap
       projection="geoEqualEarth"
-      width="800"
-      height="450"
+      width={800}
+      height={500}
       projectionConfig={{
         scale: 300,
-        center: [ -65, 30],
+        center: [ -55, 15],
       }}
     >
     <ZoomableGroup zoom={1}>

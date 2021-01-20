@@ -67,7 +67,7 @@ export const MapModule = props => {
           <div className="fabric-map">
             { tabIndex === 2 && <MapPhase3 />}
             { tabIndex !== 2 && 
-            <ComposableMap projection="geoAlbersUsa" width="800" height="500" >
+            <ComposableMap projection="geoAlbersUsa" width={800} height={500} >
               <Geographies geography={geoUrl[dataset[tabIndex]]}>
                 {({ geographies }) => (
                   <>
