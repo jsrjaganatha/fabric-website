@@ -5,6 +5,7 @@ import { AnimateOnMount } from '../../components/anim'
 import { SEO } from '../../components/seo'
 import { Title, Subheading, Paragraph } from '../../components/typography'
 import { Module } from '../../components/layout'
+import { ButtonLink } from '../../components/button'
 import { useCapabilities } from '../../hooks'
 
 const CapabilityContainer = styled.div`
@@ -89,7 +90,12 @@ const AboutPage = () => {
                     })
                 }
             </Module>
+ 
             
+            <Paragraph center style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <ButtonLink to="/resources/brochures" secondary>Download FABRIC Brochures</ButtonLink>
+            </Paragraph>
+
         </AnimateOnMount>
 
     )
