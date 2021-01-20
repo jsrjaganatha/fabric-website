@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Button } from '../button'
@@ -14,7 +13,6 @@ import {
 import { MapPhase3 } from './map-phase-3'
 import fabricMapLegend1 from "../../images/fabric-map/map-legend-phase1.png"
 import fabricMapLegend2 from "../../images/fabric-map/map-legend-phase2.png"
-import ReactTooltip from "react-tooltip";
 
 import { topomap } from "../../data/topomap.js"
 
@@ -177,19 +175,6 @@ export const MapModule = props => {
         </div>
         { tabIndex === 0 && <img src={fabricMapLegend1} alt="" style={{ width: "80%" }} /> }
         { tabIndex === 1 && <img src={fabricMapLegend2} alt="" style={{ width: "80%" }} /> }
-        <ReactTooltip />
       </Module>
     )
-=======
-import React from "react"
-import { Module } from "../layout"
-import fabricMapSvg from "../../images/fabric-map.svg"
-
-export const MapModule = (props) => {
-  return (
-    <Module title="Anticipated FABRIC Topology">
-      <img src={fabricMapSvg} alt="" style={{ width: "100%" }} />
-    </Module>
-  )
->>>>>>> master
 }
