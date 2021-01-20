@@ -89,6 +89,7 @@ export const MapModule = props => {
                     from={topomap.coordinates[from]}
                     to={topomap.coordinates[to]}
                     stroke="#27aae1"
+                    strokeWidth={2}
                     strokeDasharray="3"
                   />
                 ))
@@ -100,7 +101,7 @@ export const MapModule = props => {
                   from={topomap.coordinates[from]}
                   to={topomap.coordinates[to]}
                   stroke="#27aae1"
-                  strokeWidth={1}
+                  strokeWidth={2}
                   strokeLinecap="round"
                 />
               ))}
@@ -121,7 +122,7 @@ export const MapModule = props => {
 
               {topomap.core_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
                 <Marker key={name} coordinates={topomap.coordinates[name]} data-tip="Core Connectors: 10">
-                  <circle r={7} fill="#078ac1" />
+                  <circle r={6} fill="#078ac1" />
                   <text
                     textAnchor="middle"
                     y={markerOffset}
@@ -134,7 +135,7 @@ export const MapModule = props => {
 
               {topomap.edge_nodes[dataset[tabIndex]].map(({ name, markerOffset }) => (
                 <Marker key={name} coordinates={topomap.coordinates[name]} data-tip="Core Connectors: 10">
-                  <circle r={5} fill="#27aae1" />
+                  <circle r={3} fill="#27aae1" />
                   <text
                     textAnchor="middle"
                     y={markerOffset}
