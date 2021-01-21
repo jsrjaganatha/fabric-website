@@ -125,7 +125,7 @@ export const MapModule = props => {
                   <text
                     textAnchor="middle"
                     y={markerOffset}
-                    style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".7rem", fontWeight: "800" }}
+                    style={{ fill: "#5D5A6D", fontSize: ".7rem", fontWeight: "800" }}
                   >
                     {name}
                   </text>
@@ -138,7 +138,7 @@ export const MapModule = props => {
                   <text
                     textAnchor="middle"
                     y={markerOffset}
-                    style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".5rem", fontWeight: "600" }}
+                    style={{ fill: "#5D5A6D", fontSize: ".5rem", fontWeight: "600" }}
                   >
                     {name}
                   </text>
@@ -163,7 +163,7 @@ export const MapModule = props => {
                     <text
                       textAnchor="middle"
                       y={markerOffset}
-                      style={{ fontFamily: "system-ui", fill: "#f26522", fontSize: ".5rem", fontWeight: "600" }}
+                      style={{ fill: "#f26522", fontSize: ".5rem", fontWeight: "600" }}
                     >
                       {name}
                     </text>
