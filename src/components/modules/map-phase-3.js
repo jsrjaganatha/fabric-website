@@ -77,7 +77,7 @@ export const MapPhase3 = props => {
         <text
           textAnchor="middle"
           y={markerOffset}
-          style={{ fill: "#5D5A6D", fontSize: ".7rem", fontWeight: "600" }}
+          style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".7rem", fontWeight: "600" }}
         >
           {name}
         </text>
@@ -90,7 +90,7 @@ export const MapPhase3 = props => {
         <text
           textAnchor="middle"
           y={markerOffset}
-          style={{ fill: "#5D5A6D", fontSize: ".5rem", fontWeight: "600" }}
+          style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".5rem", fontWeight: "600" }}
         >
           {name}
         </text>
