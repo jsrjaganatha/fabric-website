@@ -16,7 +16,7 @@ export const topomap = {
     "UMich": [-83.7382, 42.2780],
     "UKY": [-84.5040, 38.0307],
     "RENCI": [-79.0469, 35.9049],
-    "ANSP&RedCLARA": [-46.6333, -23.5505],
+    "RNP&ANSP&RedCLARA": [-46.6333, -23.5505],
     // not actuall coordinates (for display purpose):
     "Clemson": [-82.5369, 34.3738],
     "CLOUDLAB": [-82.5369, 34.3738],
@@ -205,7 +205,7 @@ export const topomap = {
     { markerOffset: 12, name: "University of Bristol" },
     { markerOffset: -8, name: "University of Amsterdam" },
     { markerOffset: 12, name: "CERN" },
-    {  markerOffset: 12, name: "ANSP&RedCLARA"},
+    {  markerOffset: 12, name: "RNP&ANSP&RedCLARA"},
   ],
   usa_core_nodes: [
     { markerOffset: -8, name: "New York" },
@@ -224,7 +224,7 @@ export const topomap = {
     { from: "New York", to: "University of Bristol" },
     { from: "New York", to: "University of Amsterdam" },
     { from: "New York", to: "CERN" },
-    { from: "ANSP&RedCLARA", to: "FIU" },
+    { from: "RNP&ANSP&RedCLARA", to: "FIU" },
   ],
   usa_lines: [
     { from: "Seattle", to: "Salt Lake City" },
