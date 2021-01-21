@@ -37,7 +37,7 @@ const LogoBlock = ({ url, altText, background }) => {
     )
 }
 
-const LogosPage = () => (
+const FabricLogosPage = () => (
     <AnimateOnMount>
         <SEO
             title="Logos"
@@ -194,4 +194,4 @@ const LogosPage = () => (
 
 )
 
-export default LogosPage
+export default FabricLogosPage
