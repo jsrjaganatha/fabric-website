@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { AnimateOnMount } from '../components/anim'
 import { SEO } from '../components/seo'
@@ -8,6 +8,8 @@ import { HorizontalRule } from '../components/horizontal-rule'
 import { ExternalLink } from '../components/link'
 import { IconButton } from '../components/button'
 import { ChevronDownIcon, ChevronUpIcon } from '../components/icons'
+import { useSolicitations } from '../hooks'
+import { LinkIcon } from '../components/icons'
 
 const Table = styled.table`
   border: 2px solid var(--color-primary-light);
@@ -28,40 +30,6 @@ const Table = styled.table`
   }
 `
 
-const solicitations = {
-  current: [
-    {
-      name: 'CC* 21-528',
-      url: 'https://www.nsf.gov/pubs/2021/nsf21528/nsf21528.htm',
-    },
-    {
-      name: 'CISE-MSI Program',
-      url: 'https://www.nsf.gov/pubs/2021/nsf21528/nsf21528.htm',
-    },
-    {
-      name: 'ICE-T',
-      url: 'https://www.nsf.gov/pubs/2018/nsf18535/nsf18535.htm',
-    },
-  ],
-  expired: [
-    {
-      name: 'CISE Core 20-591',
-      url: 'https://www.nsf.gov/pubs/2020/nsf20591/nsf20591.htm',
-    },
-    {
-      name: 'CC* 20-507',
-      url: 'https://www.nsf.gov/pubs/2020/nsf20507/nsf20507.htm',
-    },
-    {
-      name: 'IRNC 20-535',
-      url: 'https://www.nsf.gov/pubs/2020/nsf20535/nsf20535.htm',
-    },
-    {
-      name: 'CICI',
-      url: 'https://www.nsf.gov/pubs/2021/nsf21512/nsf21512.htm)',
-    },
-  ],
-}
 const Toggler = styled.button.attrs({ role: 'button' })`
   width: 100%;
   background-color: transparent;
@@ -75,6 +43,7 @@ const Toggler = styled.button.attrs({ role: 'button' })`
 `
 
 const GetInvolvedPage = () => {
+  const solicitations = useSolicitations()
   const [open, setOpen] = useState(false)
 
   const handleToggleOpportunities = () => setOpen(!open)
@@ -108,29 +77,32 @@ const GetInvolvedPage = () => {
       <Table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Link to Solicitation</th>
+            <th width="25%">Solicitation</th>
+            <th></th>
+            <th>Deadline</th>
           </tr>
         </thead>
         <tbody>
           {
-            solicitations.current.map(({ name, url }, i) => (
+            solicitations.current.map(({ name, url, displayDate }, i) => (
               <tr key={ i } className="current">
-                <td>{ name }</td>
-                <td><ExternalLink to={ url }>{ url }</ExternalLink></td>
+                <td><ExternalLink to={ url }>{ name }</ExternalLink></td>
+                <td><ExternalLink to={ url }><LinkIcon size={ 24 } fill="var(--color-primary)" /></ExternalLink></td>
+                <td>{ displayDate }</td>
               </tr>
             ))
           }
           <tr className="expired-note">
-            <td colspan="2" style={{ padding: 0 }}>
+            <td colspan="3" style={{ padding: 0 }}>
               { FundingOpportunitiesToggler }
             </td>
           </tr>
           {
-            open && solicitations.expired.map(({ name, url }, i) => (
+            open && solicitations.expired.map(({ name, url, displayDate }, i) => (
               <tr key={ i } className="expired">
-                <td>{ name }</td>
-                <td><ExternalLink to={ url }>{ url }</ExternalLink></td>
+                <td><ExternalLink to={ url }>{ name }</ExternalLink></td>
+                <td><ExternalLink to={ url }><LinkIcon size={ 24 } fill="var(--color-primary)" /></ExternalLink></td>
+                <td>{ displayDate }</td>
               </tr>
             ))
           }
