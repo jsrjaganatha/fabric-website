@@ -2,13 +2,14 @@ import React, { Fragment } from 'react'
 import { AnimateOnMount } from '../../components/anim'
 import styled from 'styled-components'
 import { SEO } from '../../components/seo'
-import { Title, Paragraph } from '../../components/typography'
+import { Title, Heading, Paragraph } from '../../components/typography'
+import { ButtonLink } from '../../components/button'
 import { Module } from '../../components/layout'
 import { Container, Col, Row } from 'react-grid-system'
 
 const LogoContainer = styled.div`
     background-color: ${ props => props.background ? props.background : 'transparent' };
-    border: 1px solid var(--color-dark);
+    border: 1px solid var(--color-black);
     border-radius: 0.25rem;
     padding: 1.5rem;
     display: flex;
@@ -37,7 +38,7 @@ const LogoBlock = ({ url, altText, background }) => {
     )
 }
 
-const LogosPage = () => (
+const FabricLogosPage = () => (
     <AnimateOnMount>
         <SEO
             title="Logos"
@@ -45,7 +46,12 @@ const LogosPage = () => (
             keywords={ ["branding", "logos", "style"] }
         />
 
-        <Title>FABRIC Logos</Title>
+        <div style={{ display: 'flex', justifyContent:'space-between', alignItems: 'center' }}>
+            <Title>FABRIC Logos</Title>
+            <ButtonLink to="/branding/fab-logos" primary>View FAB Logos</ButtonLink>
+        </div>
+
+        <br />
         
         <Paragraph>
             We have a few different style and color variations on the FABRIC surface logo design available for download.
@@ -55,7 +61,7 @@ const LogosPage = () => (
 
         <Module title="For Light Backgrounds">
             <Paragraph>
-                Each of the logos in this section has a transparent background and are optimized for use on light background colors.
+                Each of these logos has a transparent background and are optimized for use on light background colors.
             </Paragraph>
 
             <Container>
@@ -87,19 +93,19 @@ const LogosPage = () => (
 
         <Module title="For Dark Backgrounds">
             <Paragraph>
-                Each of the logos in this section has a transparent background and are optimized for use on dark background colors.
+                Each of these logos has a transparent background and are optimized for use on dark background colors.
             </Paragraph>
 
             <Container>
                 <Row>
                     <Col xs={ 12 } sm={ 4 }>
-                        <LogoBlock background="var(--color-dark)"
+                        <LogoBlock background="var(--color-black)"
                             url="https://www.dropbox.com/s/1gz57gt3tn7nxkh/2019_NRIG_FABRIC%20logo%20light.png?raw=1"
                             altText="Fabric logo with text below surface"
                         />
                     </Col>
                     <Col xs={ 12 } sm={ 4 }>
-                        <LogoBlock background="#330011"
+                        <LogoBlock background="var(--color-black)"
                             url="https://www.dropbox.com/s/mbuk7mgkrni17fe/2019_NRIG_Fabric%20light%20text%20right.png?raw=1"
                             altText="Fabric logo with text beside surface"
                         />
@@ -119,4 +125,4 @@ const LogosPage = () => (
 
 )
 
-export default LogosPage
+export default FabricLogosPage

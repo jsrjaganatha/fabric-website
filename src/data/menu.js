@@ -8,6 +8,10 @@ module.exports = [
                 path: '/about/overview',
             },
             {
+                text: 'FAB',
+                path: '/about/fab',
+            },
+            {
                 text: 'SAC',
                 path: '/about/scientific-advisory-committee',
             },
@@ -21,6 +25,10 @@ module.exports = [
         text: 'Resources',
         path: '/resources',
         submenu: [
+            {
+                text: 'Brochures',
+                path: '/resources/brochures',
+            },
             {
                 text: 'Design Documents',
                 path: '/resources/design-documents',

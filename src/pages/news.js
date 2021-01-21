@@ -55,7 +55,10 @@ const NewsListItem = ({ date, path, title, timeToRead, tags, content }) => {
 }
 
 const NewsPage = ({ data }) => {
+    const todaysDate = new Date()
+    // filter out future (and thus unpublished) news items
     const news = data.allMarkdownRemark.edges
+        .filter(({ node }) => new Date(node.frontmatter.date) < todaysDate)
 
     return (
         <AnimateOnMount>
