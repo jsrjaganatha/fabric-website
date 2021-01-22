@@ -57,7 +57,7 @@ export const MapModule = props => {
     const dataset = ["phase1", "phase2"]
     const handleToggleTab = newIndex => event => setTabIndex(newIndex)
     return (
-      <Module title="Anticipated FABRIC Topology" className="fabric-map-container">
+      <Module title="Anticipated FABRIC Topology">
           <Tabs>
             <Tab key="map-phase-1" onClick={ handleToggleTab(0) } active={ tabIndex === 0 }>Phase 1</Tab>
             <Tab key="map-phase-2" onClick={ handleToggleTab(1) } active={ tabIndex === 1 }>Phase 2</Tab>
@@ -66,7 +66,11 @@ export const MapModule = props => {
           <div className="fabric-map">
             { tabIndex === 2 && <MapPhase3 />}
             { tabIndex !== 2 && 
-            <ComposableMap projection="geoAlbersUsa" width={800} height={500} >
+            <ComposableMap
+              projection="geoAlbersUsa"
+              width={800}
+              height={500}
+            >
               <Geographies geography={geoUrl[dataset[tabIndex]]}>
                 {({ geographies }) => (
                   <>
@@ -125,7 +129,7 @@ export const MapModule = props => {
                   <text
                     textAnchor="middle"
                     y={markerOffset}
-                    style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".7rem", fontWeight: "800" }}
+                    style={{ fill: "#5D5A6D", fontSize: ".7rem", fontWeight: "800" }}
                   >
                     {name}
                   </text>
@@ -138,7 +142,7 @@ export const MapModule = props => {
                   <text
                     textAnchor="middle"
                     y={markerOffset}
-                    style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".5rem", fontWeight: "600" }}
+                    style={{ fill: "#5D5A6D", fontSize: ".5rem", fontWeight: "600" }}
                   >
                     {name}
                   </text>
@@ -163,7 +167,7 @@ export const MapModule = props => {
                     <text
                       textAnchor="middle"
                       y={markerOffset}
-                      style={{ fontFamily: "system-ui", fill: "#f26522", fontSize: ".5rem", fontWeight: "600" }}
+                      style={{ fill: "#f26522", fontSize: ".5rem", fontWeight: "600" }}
                     >
                       {name}
                     </text>
