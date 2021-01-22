@@ -33,12 +33,11 @@ export const contributors = [
       },
       {
         name: "Inder Monga",
-        url: "#",
+        url: "https://www.lbl.gov/",
         organization: "Lawrence Berkeley National Laboratory",
       },
       {
         name: "Tom Lehman",
-        url: "https://www.lbl.gov/",
         organization: "Virnao",
       },
     ],
@@ -188,7 +187,7 @@ export const contributors = [
       },
       {
         name: "Inder Monga",
-        url: "#",
+        url: "https://www.lbl.gov/",
         organization: "Lawrence Berkeley National Laboratory",
       },
       {
