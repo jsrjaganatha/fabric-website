@@ -5,7 +5,6 @@ import {
   Geography,
   Line,
   Marker,
-  ZoomableGroup,
 } from "react-simple-maps";
 
 import fabricMapLegend3 from "../../images/fabric-map/map-legend-phase3.png"
@@ -16,7 +15,7 @@ const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-map
 
 export const MapPhase3 = props => {
   return (
-    <div style={{marginTop: "2rem"}}>
+    <div style={{marginTop: "1rem"}} className="fabric-map">
     <ComposableMap
       projection="geoEqualEarth"
       width={800}
@@ -26,7 +25,6 @@ export const MapPhase3 = props => {
         center: [ -55, 15],
       }}
     >
-    <ZoomableGroup zoom={1}>
     <Geographies
       geography={geoUrl}
       fill="#cde4ef"
@@ -77,7 +75,7 @@ export const MapPhase3 = props => {
         <text
           textAnchor="middle"
           y={markerOffset}
-          style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".7rem", fontWeight: "600" }}
+          style={{ fill: "#5D5A6D", fontSize: ".7rem", fontWeight: "600" }}
         >
           {name}
         </text>
@@ -90,13 +88,12 @@ export const MapPhase3 = props => {
         <text
           textAnchor="middle"
           y={markerOffset}
-          style={{ fontFamily: "system-ui", fill: "#5D5A6D", fontSize: ".5rem", fontWeight: "600" }}
+          style={{ fill: "#5D5A6D", fontSize: ".5rem", fontWeight: "600" }}
         >
           {name}
         </text>
       </Marker>
     ))}
-    </ZoomableGroup>
   </ComposableMap>
   <img src={fabricMapLegend3} alt="" style={{ width: "80%" }} /> 
  </div>
