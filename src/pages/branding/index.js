@@ -51,8 +51,7 @@ const BrandingPage = () => (
                 Here you will find assets for describing FABRIC in print and web media.
             </Paragraph>
             <Links>
-                <Link to="/branding/style">FABRIC PR Resources</Link>
-                <Link to="/branding/style">FAB PR Resources</Link>
+                <Link to="/branding/pr">FABRIC PR Resources</Link>
             </Links>
         </section>
 
