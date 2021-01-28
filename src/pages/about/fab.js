@@ -1,16 +1,17 @@
 import React from 'react'
-import styled from 'styled-components'
 import Img from 'gatsby-image'
 import { AnimateOnMount } from '../../components/anim'
 import { SEO } from '../../components/seo'
 import { Title, Heading, Subheading, Paragraph } from '../../components/typography'
 import { ExternalLink } from '../../components/link'
 import { List, ListItem } from '../../components/list'
-import { Module } from '../../components/layout'
-import { ButtonLink } from '../../components/button'
 import { contributors } from '../../data'
+import { useNSFLogo, useWindowWidth } from "../../hooks"
+import { MapPhase3 } from '../../components/modules/map-phase-3'
 
 const AboutFABPage = () => {
+  const { isCompact } = useWindowWidth()
+  const nsfLogo = useNSFLogo()
   const fabCoreTeam = contributors.find(team => team.id === 'fab-core-team')
   return (
     <AnimateOnMount>
@@ -71,7 +72,7 @@ const AboutFABPage = () => {
 
 
       <Heading>International Connections</Heading>
-
+      <MapPhase3 />
       <Paragraph>
         FAB will connect FABRIC to five global partners:
       </Paragraph>
@@ -108,10 +109,30 @@ const AboutFABPage = () => {
         }
       </List>
 
-      <Paragraph>
-        FAB is supported by NSF grants 2029200, 2020260, 2029176, 2029235, and 2029261.
-      </Paragraph>
-
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: isCompact ? "column" : "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div
+            style={{
+              padding: "1rem",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Img fixed={nsfLogo.childImageSharp.fixed} />
+          </div>
+        <Paragraph noMargin>
+          FAB is supported by NSF IRNC grants 2029200, 2020260, 2029176, 2029235, and 2029261.
+        </Paragraph>
+      </div>
     </AnimateOnMount>
 
   )
