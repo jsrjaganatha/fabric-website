@@ -9,10 +9,8 @@ tags:  ["Anita Nikolich"]
 fabricHosted: false
 seo:
     title: "Chicago Tonight: Iowa Caucus Mess Raises New Concerns About Election Security"
-    description: The Iowa Caucus raised new questions about the security of our voting systems as the country heads into the 2020 presidential race. What safeguards does the country have in place to ensure election security?
+    description: The Iowa Caucus raised new questions about the security of our voting systems as the country heads into the 2020 presidential race.
     keywords: ["Anita Nikolich"]
 ---
 
-The Iowa Caucus raised new questions about the security of our voting systems as the country heads into the 2020 presidential race. What safeguards does the country have in place to ensure election security?
-
-Anita Nikolich will share her thoughts on security and technical infrastructure used in elections on Chicago Tonight.
+The Iowa Caucus raised new questions about the security of our voting systems as the country heads into the 2020 presidential race. What safeguards does the country have in place to ensure election security?nita Nikolich will share her thoughts on security and technical infrastructure used in elections on Chicago Tonight.
