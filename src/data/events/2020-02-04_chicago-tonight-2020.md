@@ -1,5 +1,5 @@
 ---
-title: Chicago Tonight: Iowa Caucus Mess Raises New Concerns About Election Security
+title: Chicago Tonight - Iowa Caucus Mess Raises New Concerns About Election Security
 path: /events/chicago-tonight-2020
 date: 2020-02-04
 display_date: February 4, 2020
@@ -8,7 +8,7 @@ url: https://news.wttw.com/2020/02/04/iowa-caucus-mess-raises-new-concerns-about
 tags:  ["Anita Nikolich"]
 fabricHosted: false
 seo:
-    title: "Chicago Tonight: Iowa Caucus Mess Raises New Concerns About Election Security"
+    title: "Chicago Tonight - Iowa Caucus Mess Raises New Concerns About Election Security"
     description: The Iowa Caucus raised new questions about the security of our voting systems as the country heads into the 2020 presidential race.
     keywords: ["Anita Nikolich"]
 ---
